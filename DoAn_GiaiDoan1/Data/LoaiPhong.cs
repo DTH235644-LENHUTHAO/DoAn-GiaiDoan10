@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace DoAn_GiaiDoan1.Data
 {
-    public class DichVu
+    public class LoaiPhong
     {
         public int ID { get; set; }
-        public string TenDV { get; set; }
-        public decimal DonGia {  get; set; }
-        public virtual ObservableCollectionListSource<SuDungDichVu> SuDungDichVu { get; } = new();
-
+        public string TenLoaiPhong { get; set; }
+        public int SucChua { get; set; }
+        public decimal GiaGio { get; set; }
+        public virtual ObservableCollectionListSource<Phong> Phong { get; } = new();
     }
 }

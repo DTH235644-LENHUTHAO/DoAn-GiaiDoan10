@@ -30,14 +30,15 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("DichVuID")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("DonGia")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("HoaDonID")
                         .HasColumnType("int");
+
+                    b.Property<string>("NoiDung")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
@@ -47,11 +48,39 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DichVuID");
-
                     b.HasIndex("HoaDonID");
 
                     b.ToTable("ChiTietHoaDon");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.ChiTietKhuyenMai", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("HoaDonID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KhuyenMaiID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("KhuyenMaiID1")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SoTienGiam")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("HoaDonID");
+
+                    b.HasIndex("KhuyenMaiID1");
+
+                    b.ToTable("ChiTietKhuyenMai");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.DatPhong", b =>
@@ -63,6 +92,9 @@ namespace DoAn_GiaiDoan1.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("KhachHangID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NhanVienID")
                         .HasColumnType("int");
 
                     b.Property<int>("PhongID")
@@ -77,6 +109,8 @@ namespace DoAn_GiaiDoan1.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("KhachHangID");
+
+                    b.HasIndex("NhanVienID");
 
                     b.HasIndex("PhongID");
 
@@ -93,10 +127,6 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     b.Property<decimal>("DonGia")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("DonViTinh")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenDV")
                         .IsRequired()
@@ -118,9 +148,6 @@ namespace DoAn_GiaiDoan1.Migrations
                     b.Property<int>("DatPhongID")
                         .HasColumnType("int");
 
-                    b.Property<int>("NhanVienID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("ThoiGianLap")
                         .HasColumnType("datetime2");
 
@@ -130,8 +157,6 @@ namespace DoAn_GiaiDoan1.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("DatPhongID");
-
-                    b.HasIndex("NhanVienID");
 
                     b.ToTable("HoaDon");
                 });
@@ -148,10 +173,6 @@ namespace DoAn_GiaiDoan1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("TenKH")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -159,6 +180,49 @@ namespace DoAn_GiaiDoan1.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("KhachHang");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.KhuyenMai", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<decimal>("PhanTramGiam")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("TenKhuyenMai")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("KhuyenMai");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.LoaiPhong", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<decimal>("GiaGio")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("SucChua")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TenLoaiPhong")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("LoaiPhong");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.NhanVien", b =>
@@ -194,14 +258,11 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<decimal>("GiaGio")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("LoaiPhong")
+                    b.Property<string>("LoaiPhongID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SucChua")
+                    b.Property<int>("LoaiPhongID1")
                         .HasColumnType("int");
 
                     b.Property<string>("TenPhong")
@@ -214,26 +275,93 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("LoaiPhongID1");
+
                     b.ToTable("Phong");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.SuDungDichVu", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("DatPhongID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DichVuID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoLuong")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DatPhongID");
+
+                    b.HasIndex("DichVuID");
+
+                    b.ToTable("SuDungDichVu");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.ThanhToan", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("HoaDonID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhuongThuc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SoTien")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("ThoiGianThanhToan")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("HoaDonID");
+
+                    b.ToTable("ThanhToan");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.ChiTietHoaDon", b =>
                 {
-                    b.HasOne("DoAn_GiaiDoan1.Data.DichVu", "DichVu")
-                        .WithMany("ChiTietHoaDon")
-                        .HasForeignKey("DichVuID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DoAn_GiaiDoan1.Data.HoaDon", "HoaDon")
                         .WithMany("ChiTietHoaDon")
                         .HasForeignKey("HoaDonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DichVu");
+                    b.Navigation("HoaDon");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.ChiTietKhuyenMai", b =>
+                {
+                    b.HasOne("DoAn_GiaiDoan1.Data.HoaDon", "HoaDon")
+                        .WithMany("ChiTietKhuyenMai")
+                        .HasForeignKey("HoaDonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DoAn_GiaiDoan1.Data.KhuyenMai", "KhuyenMai")
+                        .WithMany("ChiTietKhuyenMai")
+                        .HasForeignKey("KhuyenMaiID1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("HoaDon");
+
+                    b.Navigation("KhuyenMai");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.DatPhong", b =>
@@ -241,6 +369,12 @@ namespace DoAn_GiaiDoan1.Migrations
                     b.HasOne("DoAn_GiaiDoan1.Data.KhachHang", "KhachHang")
                         .WithMany("DatPhong")
                         .HasForeignKey("KhachHangID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DoAn_GiaiDoan1.Data.NhanVien", "NhanVien")
+                        .WithMany("DatPhong")
+                        .HasForeignKey("NhanVienID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -252,36 +386,82 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     b.Navigation("KhachHang");
 
+                    b.Navigation("NhanVien");
+
                     b.Navigation("Phong");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.HoaDon", b =>
                 {
                     b.HasOne("DoAn_GiaiDoan1.Data.DatPhong", "DatPhong")
-                        .WithMany()
+                        .WithMany("HoaDon")
                         .HasForeignKey("DatPhongID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DoAn_GiaiDoan1.Data.NhanVien", "NhanVien")
-                        .WithMany("HoaDon")
-                        .HasForeignKey("NhanVienID")
+                    b.Navigation("DatPhong");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.Phong", b =>
+                {
+                    b.HasOne("DoAn_GiaiDoan1.Data.LoaiPhong", "LoaiPhong")
+                        .WithMany("Phong")
+                        .HasForeignKey("LoaiPhongID1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LoaiPhong");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.SuDungDichVu", b =>
+                {
+                    b.HasOne("DoAn_GiaiDoan1.Data.DatPhong", "DatPhong")
+                        .WithMany("SuDungDichVu")
+                        .HasForeignKey("DatPhongID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DoAn_GiaiDoan1.Data.DichVu", "DichVu")
+                        .WithMany("SuDungDichVu")
+                        .HasForeignKey("DichVuID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DatPhong");
 
-                    b.Navigation("NhanVien");
+                    b.Navigation("DichVu");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.ThanhToan", b =>
+                {
+                    b.HasOne("DoAn_GiaiDoan1.Data.HoaDon", "HoaDon")
+                        .WithMany("ThanhToan")
+                        .HasForeignKey("HoaDonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HoaDon");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.DatPhong", b =>
+                {
+                    b.Navigation("HoaDon");
+
+                    b.Navigation("SuDungDichVu");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.DichVu", b =>
                 {
-                    b.Navigation("ChiTietHoaDon");
+                    b.Navigation("SuDungDichVu");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.HoaDon", b =>
                 {
                     b.Navigation("ChiTietHoaDon");
+
+                    b.Navigation("ChiTietKhuyenMai");
+
+                    b.Navigation("ThanhToan");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.KhachHang", b =>
@@ -289,9 +469,19 @@ namespace DoAn_GiaiDoan1.Migrations
                     b.Navigation("DatPhong");
                 });
 
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.KhuyenMai", b =>
+                {
+                    b.Navigation("ChiTietKhuyenMai");
+                });
+
+            modelBuilder.Entity("DoAn_GiaiDoan1.Data.LoaiPhong", b =>
+                {
+                    b.Navigation("Phong");
+                });
+
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.NhanVien", b =>
                 {
-                    b.Navigation("HoaDon");
+                    b.Navigation("DatPhong");
                 });
 
             modelBuilder.Entity("DoAn_GiaiDoan1.Data.Phong", b =>

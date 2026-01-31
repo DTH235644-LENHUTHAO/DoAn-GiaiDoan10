@@ -12,8 +12,6 @@ namespace DoAn_GiaiDoan1.Data
         public int ID {  get; set; }
         public string TenKH { get; set; }
         public string DienThoai { get; set; }
-        public string Email { get; set; }
-
         public virtual ObservableCollectionListSource<DatPhong> DatPhong { get; } = new();
 
     }

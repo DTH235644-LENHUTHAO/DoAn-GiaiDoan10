@@ -27,7 +27,6 @@ namespace DoAn_GiaiDoan1.Forms
             btnHuyBo.Enabled = giaTri;
             txtTenDV.Enabled = giaTri;
             txtDonGia.Enabled = giaTri;
-            txtDonViTinh.Enabled = giaTri;
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
@@ -44,8 +43,6 @@ namespace DoAn_GiaiDoan1.Forms
             txtTenDV.DataBindings.Add("Text", bindingSource, "TenDV", false, DataSourceUpdateMode.Never);
             txtDonGia.DataBindings.Clear();
             txtDonGia.DataBindings.Add("Text", bindingSource, "DonGia", false, DataSourceUpdateMode.Never);
-            txtDonViTinh.DataBindings.Clear();
-            txtDonViTinh.DataBindings.Add("Text", bindingSource, "DonViTinh", false, DataSourceUpdateMode.Never);
             dataGridView1.DataSource = bindingSource;
         }
 
@@ -55,7 +52,6 @@ namespace DoAn_GiaiDoan1.Forms
             BatTatChucNang(true);
             txtTenDV.Clear();
             txtDonGia.Clear();
-            txtDonViTinh.Clear();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -67,7 +63,7 @@ namespace DoAn_GiaiDoan1.Forms
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTenDV.Text) || string.IsNullOrWhiteSpace(txtDonGia.Text) || string.IsNullOrWhiteSpace(txtDonViTinh.Text))
+            if (string.IsNullOrWhiteSpace(txtTenDV.Text) || string.IsNullOrWhiteSpace(txtDonGia.Text))
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
@@ -82,7 +78,6 @@ namespace DoAn_GiaiDoan1.Forms
                     DichVu dv = new DichVu();
                     dv.TenDV = txtTenDV.Text;
                     dv.DonGia = donGia;
-                    dv.DonViTinh = txtDonViTinh.Text;
                     context.DichVu.Add(dv);
                     context.SaveChanges();
                 }
@@ -93,7 +88,6 @@ namespace DoAn_GiaiDoan1.Forms
                     {
                         dv.TenDV = txtTenDV.Text;
                         dv.DonGia = donGia;
-                        dv.DonViTinh = txtDonViTinh.Text;
                         context.DichVu.Update(dv);
                         context.SaveChanges();
                     }

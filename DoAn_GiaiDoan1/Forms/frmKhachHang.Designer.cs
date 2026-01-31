@@ -35,19 +35,16 @@
             btnXoa = new Button();
             btnSua = new Button();
             btnThem = new Button();
-            txtEmail = new TextBox();
             txtDienThoai = new TextBox();
             txtTenKH = new TextBox();
-            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             ID = new DataGridViewTextBoxColumn();
             TenKH = new DataGridViewTextBoxColumn();
             DienThoai = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -61,10 +58,8 @@
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
-            groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtDienThoai);
             groupBox1.Controls.Add(txtTenKH);
-            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(36, 24);
@@ -138,18 +133,9 @@
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(378, 267);
-            txtEmail.Margin = new Padding(4);
-            txtEmail.Multiline = true;
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(556, 50);
-            txtEmail.TabIndex = 5;
-            // 
             // txtDienThoai
             // 
-            txtDienThoai.Location = new Point(378, 166);
+            txtDienThoai.Location = new Point(378, 208);
             txtDienThoai.Margin = new Padding(4);
             txtDienThoai.Multiline = true;
             txtDienThoai.Name = "txtDienThoai";
@@ -158,7 +144,7 @@
             // 
             // txtTenKH
             // 
-            txtTenKH.Location = new Point(378, 64);
+            txtTenKH.Location = new Point(378, 106);
             txtTenKH.Margin = new Padding(4);
             txtTenKH.Multiline = true;
             txtTenKH.Name = "txtTenKH";
@@ -166,20 +152,10 @@
             txtTenKH.TabIndex = 3;
             txtTenKH.TextChanged += textBox1_TextChanged;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(80, 281);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(124, 36);
-            label3.TabIndex = 2;
-            label3.Text = "Email  :";
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(80, 180);
+            label2.Location = new Point(80, 222);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(213, 36);
@@ -189,7 +165,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(80, 78);
+            label1.Location = new Point(80, 120);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(254, 36);
@@ -212,14 +188,20 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenKH, DienThoai, Email });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenKH, DienThoai });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 40);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 82;
             dataGridView1.Size = new Size(1716, 679);
-            dataGridView1.TabIndex = 0;
+            dataGridView1.TabIndex = 1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
             // ID
             // 
@@ -238,21 +220,9 @@
             // DienThoai
             // 
             DienThoai.DataPropertyName = "DienThoai";
-            DienThoai.HeaderText = "Số điện thoại";
+            DienThoai.HeaderText = "Điện thoại";
             DienThoai.MinimumWidth = 10;
             DienThoai.Name = "DienThoai";
-            // 
-            // Email
-            // 
-            Email.DataPropertyName = "Email";
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 10;
-            Email.Name = "Email";
-            // 
-            // sqlCommand1
-            // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
             // frmKhachHang
             // 
@@ -278,22 +248,19 @@
         private GroupBox groupBox1;
         private Label label1;
         private TextBox txtTenKH;
-        private Label label3;
         private Label label2;
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
-        private TextBox txtEmail;
         private TextBox txtDienThoai;
         private Button btnThoat;
         private Button btnHuyBo;
         private Button btnLuu;
         private GroupBox groupBox2;
-        private DataGridView dataGridView1;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn TenKH;
         private DataGridViewTextBoxColumn DienThoai;
-        private DataGridViewTextBoxColumn Email;
     }
 }

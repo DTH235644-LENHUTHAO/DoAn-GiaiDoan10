@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace DoAn_GiaiDoan1.Data
 {
-    public class ChiTietHoaDon
+    public class ThanhToan
     {
         public int ID { get; set; }
         public int HoaDonID { get; set; }
-        public string NoiDung { get; set; } 
-        public int SoLuong {  get; set; }
-        public decimal DonGia {  get; set; }
-        public decimal ThanhTien {  get; set; }
+        public decimal SoTien { get; set; }
+        public string PhuongThuc { get; set; }
+        public DateTime ThoiGianThanhToan { get; set; }
         public virtual HoaDon HoaDon { get; set; } = null!;
     }
 }

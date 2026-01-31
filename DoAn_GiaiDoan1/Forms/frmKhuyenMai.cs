@@ -11,10 +11,9 @@ using System.Windows.Forms;
 
 namespace DoAn_GiaiDoan1.Forms
 {
-    public partial class frmKhachHang : Form
+    public partial class frmKhuyenMai : Form
     {
-
-        public frmKhachHang()
+        public frmKhuyenMai()
         {
             InitializeComponent();
         }
@@ -27,28 +26,23 @@ namespace DoAn_GiaiDoan1.Forms
         {
             btnLuu.Enabled = giaTri;
             btnHuyBo.Enabled = giaTri;
-            txtTenKH.Enabled = giaTri;
-            txtDienThoai.Enabled = giaTri;
+            txtTenKhuyenMai.Enabled = giaTri;
+            txtPhanTramGiam.Enabled = giaTri;
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmKhachHang_Load(object sender, EventArgs e)
+        private void frmKhuyenMai_Load(object sender, EventArgs e)
         {
             BatTatChucNang(false);
-            List<KhachHang> kh = new List<KhachHang>();
-            kh = context.KhachHang.ToList();
+            List<KhuyenMai> km = new List<KhuyenMai>();
+            km = context.KhuyenMai.ToList();
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = kh;
-            txtTenKH.DataBindings.Clear();
-            txtTenKH.DataBindings.Add("Text", bindingSource, "TenKH", false, DataSourceUpdateMode.Never);
-            txtDienThoai.DataBindings.Clear();
-            txtDienThoai.DataBindings.Add("Text", bindingSource, "DienThoai", false, DataSourceUpdateMode.Never);
+            bindingSource.DataSource = km;
+            txtTenKhuyenMai.DataBindings.Clear();
+            txtTenKhuyenMai.DataBindings.Add("Text", bindingSource, "TenKhuyenMai", false, DataSourceUpdateMode.Never);
+            txtPhanTramGiam.DataBindings.Clear();
+            txtPhanTramGiam.DataBindings.Add("Text", bindingSource, "PhanTramGiam", false, DataSourceUpdateMode.Never);
             dataGridView1.DataSource = bindingSource;
         }
 
@@ -56,8 +50,8 @@ namespace DoAn_GiaiDoan1.Forms
         {
             xulyThem = true;
             BatTatChucNang(true);
-            txtTenKH.Clear();
-            txtDienThoai.Clear();
+            txtTenKhuyenMai.Clear();
+            txtPhanTramGiam.Clear();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -69,51 +63,57 @@ namespace DoAn_GiaiDoan1.Forms
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTenKH.Text) || string.IsNullOrWhiteSpace(txtDienThoai.Text))
+            if (string.IsNullOrWhiteSpace(txtTenKhuyenMai.Text) || string.IsNullOrWhiteSpace(txtPhanTramGiam.Text))
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
+                if (!decimal.TryParse(txtPhanTramGiam.Text, out decimal phantramGiam))
+                {
+                    MessageBox.Show("Phần trăm giảm phải là số!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (xulyThem)
                 {
-                    KhachHang kh = new KhachHang();
-                    kh.TenKH = txtTenKH.Text;
-                    kh.DienThoai = txtDienThoai.Text;
-                    context.KhachHang.Add(kh);
+                    KhuyenMai km = new KhuyenMai();
+                    km.TenKhuyenMai = txtTenKhuyenMai.Text;
+                    km.PhanTramGiam = phantramGiam;
+                    context.KhuyenMai.Add(km);
                     context.SaveChanges();
                 }
                 else
                 {
-                    KhachHang kh = context.KhachHang.Find(id);
-                    if (kh != null)
+                    KhuyenMai km = context.KhuyenMai.Find(id);
+                    if (km != null)
                     {
-                        kh.TenKH = txtTenKH.Text;
-                        kh.DienThoai = txtDienThoai.Text;
-                        context.KhachHang.Update(kh);
+                        km.TenKhuyenMai = txtTenKhuyenMai.Text;
+                        km.PhanTramGiam = phantramGiam;
+                        context.KhuyenMai.Add(km);
                         context.SaveChanges();
                     }
                 }
-                frmKhachHang_Load(sender, e);
+                frmKhuyenMai_Load(sender, e);
             }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Xác nhận xóa khách hàng?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Xác nhận xóa khuyến mãi?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value.ToString());
-                KhachHang kh = context.KhachHang.Find(id);
-                if (kh != null)
+                KhuyenMai km = context.KhuyenMai.Find(id);
+                if (km != null)
                 {
-                    context.KhachHang.Remove(kh);
+                    context.KhuyenMai.Remove(km);
                 }
                 context.SaveChanges();
-                frmKhachHang_Load(sender, e);
+                frmKhuyenMai_Load(sender, e);
             }
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
-            frmKhachHang_Load(sender, e);
+            frmKhuyenMai_Load(sender, e);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -123,11 +123,6 @@ namespace DoAn_GiaiDoan1.Forms
             {
                 this.Close();
             }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

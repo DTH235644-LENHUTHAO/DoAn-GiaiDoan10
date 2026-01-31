@@ -30,10 +30,6 @@
         {
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             dataGridView1 = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            TenDV = new DataGridViewTextBoxColumn();
-            DonGia = new DataGridViewTextBoxColumn();
-            DonViTinh = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
             btnThoat = new Button();
             btnHuyBo = new Button();
@@ -46,8 +42,10 @@
             label2 = new Label();
             label1 = new Label();
             groupBox1 = new GroupBox();
-            txtDonViTinh = new TextBox();
             txtTenDV = new TextBox();
+            ID = new DataGridViewTextBoxColumn();
+            TenDV = new DataGridViewTextBoxColumn();
+            DonGia = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -64,7 +62,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenDV, DonGia, DonViTinh });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenDV, DonGia });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 40);
             dataGridView1.MultiSelect = false;
@@ -72,34 +70,6 @@
             dataGridView1.RowHeadersWidth = 82;
             dataGridView1.Size = new Size(1716, 679);
             dataGridView1.TabIndex = 0;
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "ID";
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            // 
-            // TenDV
-            // 
-            TenDV.DataPropertyName = "TenDV";
-            TenDV.HeaderText = "Tên dịch vụ";
-            TenDV.MinimumWidth = 10;
-            TenDV.Name = "TenDV";
-            // 
-            // DonGia
-            // 
-            DonGia.DataPropertyName = "DonGia";
-            DonGia.HeaderText = "Đơn giá";
-            DonGia.MinimumWidth = 10;
-            DonGia.Name = "DonGia";
-            // 
-            // DonViTinh
-            // 
-            DonViTinh.DataPropertyName = "DonViTinh";
-            DonViTinh.HeaderText = "Đơn vị tính";
-            DonViTinh.MinimumWidth = 10;
-            DonViTinh.Name = "DonViTinh";
             // 
             // groupBox2
             // 
@@ -175,7 +145,7 @@
             // 
             // txtDonGia
             // 
-            txtDonGia.Location = new Point(378, 166);
+            txtDonGia.Location = new Point(378, 209);
             txtDonGia.Margin = new Padding(4);
             txtDonGia.Multiline = true;
             txtDonGia.Name = "txtDonGia";
@@ -188,14 +158,13 @@
             label3.Location = new Point(81, 281);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(190, 36);
+            label3.Size = new Size(0, 36);
             label3.TabIndex = 2;
-            label3.Text = "Đơn vị tính :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(81, 180);
+            label2.Location = new Point(81, 223);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(142, 36);
@@ -205,7 +174,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(81, 78);
+            label1.Location = new Point(81, 121);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(196, 36);
@@ -220,7 +189,6 @@
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
-            groupBox1.Controls.Add(txtDonViTinh);
             groupBox1.Controls.Add(txtDonGia);
             groupBox1.Controls.Add(txtTenDV);
             groupBox1.Controls.Add(label3);
@@ -235,23 +203,35 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin dịch vụ";
             // 
-            // txtDonViTinh
-            // 
-            txtDonViTinh.Location = new Point(378, 267);
-            txtDonViTinh.Margin = new Padding(4);
-            txtDonViTinh.Multiline = true;
-            txtDonViTinh.Name = "txtDonViTinh";
-            txtDonViTinh.Size = new Size(556, 50);
-            txtDonViTinh.TabIndex = 5;
-            // 
             // txtTenDV
             // 
-            txtTenDV.Location = new Point(378, 64);
+            txtTenDV.Location = new Point(378, 107);
             txtTenDV.Margin = new Padding(4);
             txtTenDV.Multiline = true;
             txtTenDV.Name = "txtTenDV";
             txtTenDV.Size = new Size(556, 50);
             txtTenDV.TabIndex = 3;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "ID";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            // 
+            // TenDV
+            // 
+            TenDV.DataPropertyName = "TenDV";
+            TenDV.HeaderText = "Tên dịch vụ";
+            TenDV.MinimumWidth = 10;
+            TenDV.Name = "TenDV";
+            // 
+            // DonGia
+            // 
+            DonGia.DataPropertyName = "DonGia";
+            DonGia.HeaderText = "Đơn giá";
+            DonGia.MinimumWidth = 10;
+            DonGia.Name = "DonGia";
             // 
             // frmDichVu
             // 
@@ -288,11 +268,9 @@
         private Label label2;
         private Label label1;
         private GroupBox groupBox1;
-        private TextBox txtDonViTinh;
         private TextBox txtTenDV;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn TenDV;
         private DataGridViewTextBoxColumn DonGia;
-        private DataGridViewTextBoxColumn DonViTinh;
     }
 }
