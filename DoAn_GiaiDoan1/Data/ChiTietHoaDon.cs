@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoAn_GiaiDoan1.Data
+namespace QuanLyQuanKaraoke.Data
 {
     public class ChiTietHoaDon
     {

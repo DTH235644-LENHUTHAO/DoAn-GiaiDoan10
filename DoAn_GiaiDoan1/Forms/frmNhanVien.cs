@@ -1,4 +1,4 @@
-﻿using DoAn_GiaiDoan1.Data;
+﻿using QuanLyQuanKaraoke.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DoAn_GiaiDoan1.Forms
+namespace QuanLyQuanKaraoke.Forms
 {
     public partial class frmNhanVien : Form
     {

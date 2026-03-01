@@ -9,7 +9,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace DoAn_GiaiDoan1.Helpers
+namespace QuanLyQuanKaraoke.Helpers
 {
     internal static class StringExtensions
     {

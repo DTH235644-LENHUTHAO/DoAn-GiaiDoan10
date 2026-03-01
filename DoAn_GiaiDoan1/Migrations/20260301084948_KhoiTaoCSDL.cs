@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DoAn_GiaiDoan1.Migrations
+namespace QuanLyQuanKaraoke.Migrations
 {
     /// <inheritdoc />
     public partial class KhoiTaoCSDL : Migration
@@ -242,7 +242,8 @@ namespace DoAn_GiaiDoan1.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HoaDonID = table.Column<int>(type: "int", nullable: false),
                     KhuyenMaiID = table.Column<int>(type: "int", nullable: false),
-                    SoTienGiam = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    ThoiDiemApDung = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

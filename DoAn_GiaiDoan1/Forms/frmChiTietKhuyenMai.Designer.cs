@@ -1,6 +1,6 @@
 ﻿namespace QuanLyQuanKaraoke.Forms
 {
-    partial class frmDichVu
+    partial class frmChiTietKhuyenMai
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            dataGridView1 = new DataGridView();
             groupBox2 = new GroupBox();
+            dataGridView1 = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            TenKhuyenMai = new DataGridViewTextBoxColumn();
+            PhanTramGiam = new DataGridViewTextBoxColumn();
+            ThoiDiemApDung = new DataGridViewTextBoxColumn();
+            GhiChu = new DataGridViewTextBoxColumn();
             btnThoat = new Button();
             btnHuyBo = new Button();
             btnLuu = new Button();
             btnXoa = new Button();
             btnSua = new Button();
             btnThem = new Button();
-            txtDonGia = new TextBox();
             label3 = new Label();
-            label2 = new Label();
             label1 = new Label();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             groupBox1 = new GroupBox();
-            txtTenDV = new TextBox();
-            ID = new DataGridViewTextBoxColumn();
-            TenDV = new DataGridViewTextBoxColumn();
-            DonGia = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dateTimePicker1 = new DateTimePicker();
+            txtGhiChu = new TextBox();
+            label4 = new Label();
+            label2 = new Label();
+            cboKhuyenMai = new ComboBox();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // sqlCommand1
+            // groupBox2
             // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.EnableOptimizedParameterBinding = false;
+            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Location = new Point(27, 394);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(1722, 722);
+            groupBox2.TabIndex = 7;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Danh sách khuyến mãi";
             // 
             // dataGridView1
             // 
@@ -62,7 +71,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenDV, DonGia });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenKhuyenMai, PhanTramGiam, ThoiDiemApDung, GhiChu });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 40);
             dataGridView1.MultiSelect = false;
@@ -71,15 +80,40 @@
             dataGridView1.Size = new Size(1716, 679);
             dataGridView1.TabIndex = 0;
             // 
-            // groupBox2
+            // ID
             // 
-            groupBox2.Controls.Add(dataGridView1);
-            groupBox2.Location = new Point(32, 385);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1722, 722);
-            groupBox2.TabIndex = 3;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Danh sách dịch vụ";
+            ID.DataPropertyName = "ID";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            // 
+            // TenKhuyenMai
+            // 
+            TenKhuyenMai.DataPropertyName = "TenKhuyenMai";
+            TenKhuyenMai.HeaderText = "Tên khuyến mãi";
+            TenKhuyenMai.MinimumWidth = 10;
+            TenKhuyenMai.Name = "TenKhuyenMai";
+            // 
+            // PhanTramGiam
+            // 
+            PhanTramGiam.DataPropertyName = "PhanTramGiam";
+            PhanTramGiam.HeaderText = "Phần trăm giảm";
+            PhanTramGiam.MinimumWidth = 10;
+            PhanTramGiam.Name = "PhanTramGiam";
+            // 
+            // ThoiDiemApDung
+            // 
+            ThoiDiemApDung.DataPropertyName = "ThoiDiemApDung";
+            ThoiDiemApDung.HeaderText = "Thời điểm áp dụng";
+            ThoiDiemApDung.MinimumWidth = 10;
+            ThoiDiemApDung.Name = "ThoiDiemApDung";
+            // 
+            // GhiChu
+            // 
+            GhiChu.DataPropertyName = "GhiChu";
+            GhiChu.HeaderText = "Ghi chú";
+            GhiChu.MinimumWidth = 10;
+            GhiChu.Name = "GhiChu";
             // 
             // btnThoat
             // 
@@ -143,110 +177,110 @@
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
-            // txtDonGia
-            // 
-            txtDonGia.Location = new Point(378, 209);
-            txtDonGia.Margin = new Padding(4);
-            txtDonGia.Multiline = true;
-            txtDonGia.Name = "txtDonGia";
-            txtDonGia.Size = new Size(556, 50);
-            txtDonGia.TabIndex = 4;
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(81, 281);
+            label3.Location = new Point(83, 281);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(0, 36);
             label3.TabIndex = 2;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(81, 223);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(142, 36);
-            label2.TabIndex = 1;
-            label2.Text = "Đơn giá :";
-            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(81, 121);
+            label1.Location = new Point(55, 78);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(196, 36);
+            label1.Size = new Size(203, 36);
             label1.TabIndex = 0;
-            label1.Text = "Tên dịch vụ :";
+            label1.Text = "Khuyến mãi :";
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(txtGhiChu);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(cboKhuyenMai);
             groupBox1.Controls.Add(btnThoat);
             groupBox1.Controls.Add(btnHuyBo);
             groupBox1.Controls.Add(btnLuu);
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
-            groupBox1.Controls.Add(txtDonGia);
-            groupBox1.Controls.Add(txtTenDV);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(32, 12);
+            groupBox1.Location = new Point(27, 21);
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 3, 4, 3);
             groupBox1.Size = new Size(1722, 367);
-            groupBox1.TabIndex = 2;
+            groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Thông tin dịch vụ";
+            groupBox1.Text = "Thông tin khuyến mãi";
             // 
-            // txtTenDV
+            // dateTimePicker1
             // 
-            txtTenDV.Location = new Point(378, 107);
-            txtTenDV.Margin = new Padding(4);
-            txtTenDV.Multiline = true;
-            txtTenDV.Name = "txtTenDV";
-            txtTenDV.Size = new Size(556, 50);
-            txtTenDV.TabIndex = 3;
+            dateTimePicker1.Location = new Point(385, 165);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(551, 44);
+            dateTimePicker1.TabIndex = 16;
             // 
-            // ID
+            // txtGhiChu
             // 
-            ID.DataPropertyName = "ID";
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
+            txtGhiChu.Location = new Point(205, 249);
+            txtGhiChu.Name = "txtGhiChu";
+            txtGhiChu.Size = new Size(834, 44);
+            txtGhiChu.TabIndex = 15;
             // 
-            // TenDV
+            // label4
             // 
-            TenDV.DataPropertyName = "TenDV";
-            TenDV.HeaderText = "Tên dịch vụ";
-            TenDV.MinimumWidth = 10;
-            TenDV.Name = "TenDV";
+            label4.AutoSize = true;
+            label4.Location = new Point(55, 257);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(143, 36);
+            label4.TabIndex = 14;
+            label4.Text = "Ghi chú :";
             // 
-            // DonGia
+            // label2
             // 
-            DonGia.DataPropertyName = "DonGia";
-            DonGia.HeaderText = "Đơn giá";
-            DonGia.MinimumWidth = 10;
-            DonGia.Name = "DonGia";
+            label2.AutoSize = true;
+            label2.Location = new Point(55, 173);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(307, 36);
+            label2.TabIndex = 13;
+            label2.Text = "Thời điểm áp dụng: :";
             // 
-            // frmDichVu
+            // cboKhuyenMai
+            // 
+            cboKhuyenMai.FormattingEnabled = true;
+            cboKhuyenMai.Location = new Point(299, 65);
+            cboKhuyenMai.Name = "cboKhuyenMai";
+            cboKhuyenMai.Size = new Size(467, 44);
+            cboKhuyenMai.TabIndex = 12;
+            // 
+            // frmChiTietKhuyenMai
             // 
             AutoScaleDimensions = new SizeF(19F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1787, 1111);
+            ClientSize = new Size(1779, 1140);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             Margin = new Padding(4, 3, 4, 3);
-            Name = "frmDichVu";
-            Text = "Dịch Vụ";
-            Load += frmDichVu_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Name = "frmChiTietKhuyenMai";
+            Text = "Chi tiết khuyến mãi";
+            Load += frmChiTietKhuyenMai_Load;
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -254,23 +288,27 @@
 
         #endregion
 
-        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
-        private DataGridView dataGridView1;
         private GroupBox groupBox2;
+        private DataGridView dataGridView1;
         private Button btnThoat;
         private Button btnHuyBo;
         private Button btnLuu;
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
-        private TextBox txtDonGia;
         private Label label3;
-        private Label label2;
         private Label label1;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private GroupBox groupBox1;
-        private TextBox txtTenDV;
+        private ComboBox cboKhuyenMai;
+        private TextBox txtGhiChu;
+        private Label label4;
+        private Label label2;
+        private DateTimePicker dateTimePicker1;
         private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn TenDV;
-        private DataGridViewTextBoxColumn DonGia;
+        private DataGridViewTextBoxColumn TenKhuyenMai;
+        private DataGridViewTextBoxColumn PhanTramGiam;
+        private DataGridViewTextBoxColumn ThoiDiemApDung;
+        private DataGridViewTextBoxColumn GhiChu;
     }
 }

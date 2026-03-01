@@ -1,4 +1,4 @@
-﻿namespace DoAn_GiaiDoan1.Forms
+﻿namespace QuanLyQuanKaraoke.Forms
 {
     partial class frmKhachHang
     {

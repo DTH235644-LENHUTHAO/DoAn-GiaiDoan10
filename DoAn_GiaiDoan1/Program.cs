@@ -1,6 +1,6 @@
-using DoAn_GiaiDoan1.Forms;
+using QuanLyQuanKaraoke.Forms;
 
-namespace DoAn_GiaiDoan1
+namespace QuanLyQuanKaraoke
 {
     internal static class Program
     {
@@ -13,7 +13,7 @@ namespace DoAn_GiaiDoan1
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmPhong ());
+            Application.Run(new frmChiTietKhuyenMai ());
         }
     }
 }

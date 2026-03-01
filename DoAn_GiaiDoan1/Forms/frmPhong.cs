@@ -1,4 +1,4 @@
-﻿using DoAn_GiaiDoan1.Data;
+﻿using QuanLyQuanKaraoke.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using DoAn_GiaiDoan1.Helpers;
+using QuanLyQuanKaraoke.Helpers;
 
-namespace DoAn_GiaiDoan1.Forms
+namespace QuanLyQuanKaraoke.Forms
 {
     public partial class frmPhong : Form
     {
@@ -25,6 +25,7 @@ namespace DoAn_GiaiDoan1.Forms
         bool xulyThem = false;
         int id;
         string imagesFolder = Application.StartupPath.Replace("bin\\Debug\\net5.0-windows", "Images");
+        //string imagesFolder = Path.Combine(Application.StartupPath, "image");
         string hinhAnhTam = "";
 
         private void BatTatChucNang(bool giaTri)
@@ -52,7 +53,7 @@ namespace DoAn_GiaiDoan1.Forms
             cboLoaiPhong.DisplayMember = "TenLoaiPhong";
             cboLoaiPhong.ValueMember = "ID";
 
-            var ds = context.Phong
+            /*var ds = context.Phong
                 .Include(p => p.LoaiPhong)
                 .Select(p => new
                 {
@@ -65,10 +66,22 @@ namespace DoAn_GiaiDoan1.Forms
                     SucChua = p.LoaiPhong.SucChua,
                     GiaGio = p.LoaiPhong.GiaGio
                 })
-                .ToList();
+                .ToList();*/
 
+            List<DanhSachPhong> p= new List<DanhSachPhong>();
+            p=context.Phong.Select(r=>new DanhSachPhong
+            {
+                ID = r.ID,
+                TenPhong = r.TenPhong,
+                TrangThai = r.TrangThai,
+                LoaiPhongID = r.LoaiPhongID,
+                HinhAnh = r.HinhAnh,
+                TenLoaiPhong = r.LoaiPhong.TenLoaiPhong,
+                SucChua = r.LoaiPhong.SucChua,
+                GiaGio = r.LoaiPhong.GiaGio
+            }).ToList();
             BindingSource bs = new BindingSource();
-            bs.DataSource = ds;
+            bs.DataSource = p;
 
             txtTenPhong.DataBindings.Clear();
             txtTenPhong.DataBindings.Add("Text", bs, "TenPhong", false, DataSourceUpdateMode.Never);
@@ -110,6 +123,9 @@ namespace DoAn_GiaiDoan1.Forms
             BatTatChucNang(true);
 
             id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value);
+
+            var fileName = dataGridView1.CurrentRow.Cells["HinhAnh"].Value?.ToString();
+            hinhAnhTam = fileName;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -137,8 +153,12 @@ namespace DoAn_GiaiDoan1.Forms
                         p.TenPhong = txtTenPhong.Text;
                         p.TrangThai = txtTrangThai.Text;
                         p.LoaiPhongID = (int)cboLoaiPhong.SelectedValue;
-                        p.HinhAnh = hinhAnhTam;
-                        context.Phong.Add(p);
+                        //p.HinhAnh = hinhAnhTam;
+                        if (!string.IsNullOrEmpty(hinhAnhTam))
+                        {
+                            p.HinhAnh = hinhAnhTam;
+                        }
+                        context.Phong.Update(p);
                         context.SaveChanges();
                     }
                 }
@@ -177,13 +197,21 @@ namespace DoAn_GiaiDoan1.Forms
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "HinhAnh" && e.Value != null)
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "HinhAnh")
             {
-                string path = Path.Combine(imagesFolder, e.Value.ToString());
-                if (File.Exists(path))
+                var fileName = dataGridView1.Rows[e.RowIndex].DataBoundItem as DanhSachPhong;
+
+                if (fileName != null && !string.IsNullOrEmpty(fileName.HinhAnh))
                 {
-                    Image img = Image.FromFile(path);
-                    e.Value = new Bitmap(img, 24, 24);
+                    string path = Path.Combine(imagesFolder, fileName.HinhAnh);
+
+                    if (File.Exists(path))
+                    {
+                        using (var imgTemp = Image.FromFile(path))
+                        {
+                            e.Value = new Bitmap(imgTemp, 40, 40);
+                        }
+                    }
                 }
             }
         }
@@ -200,12 +228,16 @@ namespace DoAn_GiaiDoan1.Forms
                 string ext = Path.GetExtension(openFileDialog.FileName);
                 string fileSavePath = Path.Combine(imagesFolder, fileName.GenerateSlug() + ext);
                 File.Copy(openFileDialog.FileName, fileSavePath, true);
-                id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value.ToString());
+                /*id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value.ToString());
                 Phong p = context.Phong.Find(id);
                 p.HinhAnh = fileName.GenerateSlug() + ext;
                 context.Phong.Update(p);
                 context.SaveChanges();
-                frmPhong_Load(sender, e);
+                frmPhong_Load(sender, e);*/
+                picHinhAnh.ImageLocation = fileSavePath;
+
+                
+                hinhAnhTam = fileName.GenerateSlug() + ext;
             }
         }
 

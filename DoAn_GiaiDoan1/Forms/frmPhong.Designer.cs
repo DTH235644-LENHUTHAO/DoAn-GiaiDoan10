@@ -1,4 +1,4 @@
-﻿namespace DoAn_GiaiDoan1.Forms
+﻿namespace QuanLyQuanKaraoke.Forms
 {
     partial class frmPhong
     {
@@ -50,7 +50,7 @@
             cboLoaiPhong = new ComboBox();
             IDPhong = new DataGridViewTextBoxColumn();
             TenPhong = new DataGridViewTextBoxColumn();
-            LoaiPhong = new DataGridViewTextBoxColumn();
+            TenLoaiPhong = new DataGridViewTextBoxColumn();
             TrangThai = new DataGridViewTextBoxColumn();
             SucChua = new DataGridViewTextBoxColumn();
             GiaGio = new DataGridViewTextBoxColumn();
@@ -201,7 +201,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IDPhong, TenPhong, LoaiPhong, TrangThai, SucChua, GiaGio, HinhAnh });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IDPhong, TenPhong, TenLoaiPhong, TrangThai, SucChua, GiaGio, HinhAnh });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 40);
             dataGridView1.MultiSelect = false;
@@ -289,12 +289,12 @@
             TenPhong.MinimumWidth = 10;
             TenPhong.Name = "TenPhong";
             // 
-            // LoaiPhong
+            // TenLoaiPhong
             // 
-            LoaiPhong.DataPropertyName = "LoaiPhong";
-            LoaiPhong.HeaderText = "Loại phòng";
-            LoaiPhong.MinimumWidth = 10;
-            LoaiPhong.Name = "LoaiPhong";
+            TenLoaiPhong.DataPropertyName = "TenLoaiPhong";
+            TenLoaiPhong.HeaderText = "Loại phòng";
+            TenLoaiPhong.MinimumWidth = 10;
+            TenLoaiPhong.Name = "TenLoaiPhong";
             // 
             // TrangThai
             // 
@@ -368,7 +368,7 @@
         private Button btnThemAnh;
         private DataGridViewTextBoxColumn IDPhong;
         private DataGridViewTextBoxColumn TenPhong;
-        private DataGridViewTextBoxColumn LoaiPhong;
+        private DataGridViewTextBoxColumn TenLoaiPhong;
         private DataGridViewTextBoxColumn TrangThai;
         private DataGridViewTextBoxColumn SucChua;
         private DataGridViewTextBoxColumn GiaGio;
