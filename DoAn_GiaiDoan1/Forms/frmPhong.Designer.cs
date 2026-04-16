@@ -50,11 +50,11 @@
             GiaGio = new DataGridViewTextBoxColumn();
             HinhAnh = new DataGridViewImageColumn();
             groupBox1 = new GroupBox();
+            cboTrangThai = new ComboBox();
             btnThemAnh = new Button();
             btnDoiHinh = new Button();
             picHinhAnh = new PictureBox();
             cboLoaiPhong = new ComboBox();
-            cboTrangThai = new ComboBox();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -278,9 +278,18 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin phòng";
             // 
+            // cboTrangThai
+            // 
+            cboTrangThai.FormattingEnabled = true;
+            cboTrangThai.Items.AddRange(new object[] { "Bình thường", "Bảo trì" });
+            cboTrangThai.Location = new Point(378, 272);
+            cboTrangThai.Name = "cboTrangThai";
+            cboTrangThai.Size = new Size(556, 44);
+            cboTrangThai.TabIndex = 18;
+            // 
             // btnThemAnh
             // 
-            btnThemAnh.Location = new Point(1477, 134);
+            btnThemAnh.Location = new Point(1645, 134);
             btnThemAnh.Name = "btnThemAnh";
             btnThemAnh.Size = new Size(166, 55);
             btnThemAnh.TabIndex = 17;
@@ -290,7 +299,7 @@
             // 
             // btnDoiHinh
             // 
-            btnDoiHinh.Location = new Point(1477, 58);
+            btnDoiHinh.Location = new Point(1645, 58);
             btnDoiHinh.Name = "btnDoiHinh";
             btnDoiHinh.Size = new Size(166, 55);
             btnDoiHinh.TabIndex = 16;
@@ -302,7 +311,7 @@
             // 
             picHinhAnh.Location = new Point(1086, 58);
             picHinhAnh.Name = "picHinhAnh";
-            picHinhAnh.Size = new Size(365, 253);
+            picHinhAnh.Size = new Size(439, 253);
             picHinhAnh.SizeMode = PictureBoxSizeMode.StretchImage;
             picHinhAnh.TabIndex = 15;
             picHinhAnh.TabStop = false;
@@ -314,15 +323,6 @@
             cboLoaiPhong.Name = "cboLoaiPhong";
             cboLoaiPhong.Size = new Size(556, 44);
             cboLoaiPhong.TabIndex = 14;
-            // 
-            // cboTrangThai
-            // 
-            cboTrangThai.FormattingEnabled = true;
-            cboTrangThai.Items.AddRange(new object[] { "Bình thường", "Bảo trì" });
-            cboTrangThai.Location = new Point(378, 272);
-            cboTrangThai.Name = "cboTrangThai";
-            cboTrangThai.Size = new Size(556, 44);
-            cboTrangThai.TabIndex = 18;
             // 
             // frmPhong
             // 

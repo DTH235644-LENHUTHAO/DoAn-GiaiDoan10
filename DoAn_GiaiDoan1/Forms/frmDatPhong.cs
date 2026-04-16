@@ -40,6 +40,13 @@ namespace QuanLyQuanKaraoke.Forms
                 ThoiGianKetThuc = r.ThoiGianKetThuc
             }).ToList();
             dataGridView1.DataSource = dp;
+
+
+            //tự điều chỉnh kích thước cột theo nội dung
+            dataGridView1.Columns["TenKhachHang"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["TenNhanVien"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["ThoiGianBatDau"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["ThoiGianKetThuc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void btnLapHoaDon_Click(object sender, EventArgs e)

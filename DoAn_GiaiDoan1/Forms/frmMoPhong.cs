@@ -26,27 +26,51 @@ namespace QuanLyQuanKaraoke.Forms
         private void frmDatPhong_Load(object sender, EventArgs e)
         {
             lblPhong.Text = context.Phong.Find(phongID).TenPhong;
-            lblNhanVien.Text = context.NhanVien.Find(nhanVienID).TenNV;
+            lblNhanVien.Text = "Nhân viên mở phòng : "+context.NhanVien.Find(nhanVienID).TenNV;
 
-            cbKhachHang.DataSource = context.KhachHang.ToList();
-            cbKhachHang.DisplayMember = "TenKH";
-            cbKhachHang.ValueMember = "ID";
         }
 
         private void btnMoPhong_Click(object sender, EventArgs e)
         {
-            DatPhong dp = new DatPhong();
+            string tenKH = txtTenKH.Text.Trim();
+            string dienThoai = txtDienThoai.Text.Trim();
 
-            dp.PhongID = phongID;
-            dp.NhanVienID = nhanVienID;
-            dp.KhachHangID = Convert.ToInt32(cbKhachHang.SelectedValue);
-            dp.ThoiGianBatDau = DateTime.Now;
+            if (string.IsNullOrEmpty(tenKH) || string.IsNullOrEmpty(dienThoai))
+            {
+                MessageBox.Show("Nhập tên và số điện thoại!");
+                return;
+            }
+
+            // tìm khách hàng theo SĐT và tên không phân biệt hoa thường
+            var kh = context.KhachHang
+                .FirstOrDefault(x => x.DienThoai == dienThoai && x.TenKH.ToLower() == tenKH.ToLower());
+
+            if (kh == null)
+            {
+                // thêm mới khách hàng nếu chưa có
+                kh = new KhachHang
+                {
+                    TenKH = tenKH,
+                    DienThoai = dienThoai
+                };
+
+                context.KhachHang.Add(kh);
+                context.SaveChanges();
+            }
+
+            // tạo đặt phòng
+            DatPhong dp = new DatPhong
+            {
+                PhongID = phongID,
+                NhanVienID = nhanVienID,
+                KhachHangID = kh.ID,
+                ThoiGianBatDau = DateTime.Now
+            };
 
             context.DatPhong.Add(dp);
             context.SaveChanges();
 
             MessageBox.Show("Mở phòng thành công!");
-
             this.Close();
         }
     }

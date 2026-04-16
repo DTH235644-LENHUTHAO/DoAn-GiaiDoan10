@@ -20,7 +20,7 @@ namespace QuanLyQuanKaraoke.Forms
             InitializeComponent();
         }
         QLQKDbContext context = new QLQKDbContext();
-        string imagesFolder = Application.StartupPath.Replace("bin\\Debug\\net5.0-windows", "Images");
+        string imagesFolder = Application.StartupPath.Replace("bin\\Debug\\net8.0-windows", "Images");
 
 
         private void frmDanhSachPhong_Load(object sender, EventArgs e)
@@ -57,7 +57,8 @@ namespace QuanLyQuanKaraoke.Forms
                 pic.Height = 200;
                 pic.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                string path = Path.Combine(Application.StartupPath, "Images", p.HinhAnh);
+                string path = Path.Combine(imagesFolder, p.HinhAnh);
+
 
                 if (File.Exists(path))
                 {
@@ -134,34 +135,39 @@ namespace QuanLyQuanKaraoke.Forms
             }
             else
             {
-                DialogResult rs = MessageBox.Show(
-                    "Phòng đang hát!\nBạn muốn làm gì?\nNhấn OK để đóng phòng.\nNhấn NO để thêm dịch vụ.",
-                    "Chọn chức năng",
-                    MessageBoxButtons.YesNoCancel,
-                    MessageBoxIcon.Question
-                );
+                frmLuaChon fchon = new frmLuaChon();
 
-                if (rs == DialogResult.Yes)
+                var result = fchon.ShowDialog();
+
+                if (result == DialogResult.OK)
                 {
-                    dp.ThoiGianKetThuc = DateTime.Now;
+                    if (fchon.LuaChon == "DongPhong")
+                    {
+                        dp.ThoiGianKetThuc = DateTime.Now;
 
-                    TimeSpan tg = dp.ThoiGianKetThuc.Value - dp.ThoiGianBatDau;
-                    double gio = tg.TotalHours;
+                        TimeSpan tg = dp.ThoiGianKetThuc.Value - dp.ThoiGianBatDau;
+                        double gio = tg.TotalHours;
 
-                    double tien = gio * (double)context.Phong
-                        .Where(p => p.ID == phongID)
-                        .Select(p => p.LoaiPhong.GiaGio)
-                        .FirstOrDefault();
+                        double tien = gio * (double)context.Phong
+                            .Where(p => p.ID == phongID)
+                            .Select(p => p.LoaiPhong.GiaGio)
+                            .FirstOrDefault();
 
-                    MessageBox.Show($"Giờ: {gio:0.00}\nTiền: {tien:N0}đ");
+                        MessageBox.Show($"Giờ: {gio:0.00}\nTiền: {tien:N0}đ");
 
-                    context.SaveChanges();
-                    frmDanhSachPhong_Load(sender, e);
+                        context.SaveChanges();
+                        frmDanhSachPhong_Load(sender, e);
+                    }
+                    else if (fchon.LuaChon == "ThemDV")
+                    {
+                        frmSuDungDichVu f = new frmSuDungDichVu(dp.ID);
+                        f.ShowDialog();
+                    }
                 }
-                else if (rs == DialogResult.No)
+                else
                 {
-                    frmSuDungDichVu f = new frmSuDungDichVu(dp.ID);
-                    f.ShowDialog();
+                    
+                    return;
                 }
             }
         }

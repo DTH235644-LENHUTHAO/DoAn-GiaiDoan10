@@ -47,10 +47,17 @@ namespace QuanLyQuanKaraoke.Forms
 
             dataGridView1.DataSource = bs;
 
+            //ẩn id 
             dataGridView1.Columns["NhanVienID"].Visible = false;
             dataGridView1.Columns["KhachHangID"].Visible = false;
             dataGridView1.Columns["DatPhongID"].Visible = false;
             dataGridView1.Columns["KhuyenMaiID"].Visible = false;
+
+            //cột dãn cách theo nội dung
+            dataGridView1.Columns["TenNV"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["TenKH"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["TenKhuyenMai"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["ThoiGianLap"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         }
 

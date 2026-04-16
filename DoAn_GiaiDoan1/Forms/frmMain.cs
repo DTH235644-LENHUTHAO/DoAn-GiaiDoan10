@@ -32,6 +32,7 @@ namespace QuanLyQuanKaraoke.Forms
         frmDatPhong datPhong = null;
         frmDanhSachHoaDon danhsachhoaDon = null;
         frmThongKeDoanhThu thongKeDoanhThu = null;
+        frmThongKeDichVu thongKeDichVu = null;
         frmThanhToan thanhToan = null;
         string TenNhanVien = "";
         public static int NVID = 0;
@@ -117,9 +118,16 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void DangNhap()
         {
+            context = new QLQKDbContext();//Đăng nhập luôn cập nhật dữ liệu mới nhất
         LamLai:
             if (dangNhap == null || dangNhap.IsDisposed)
                 dangNhap = new frmDangNhap();
+            else
+            {
+                //reset dữ liệu
+                dangNhap.txtTenDangNhap.Clear();
+                dangNhap.txtMatKhau.Clear();
+            }
             if (dangNhap.ShowDialog() == DialogResult.OK)
             {
                 string tenDangNhap = dangNhap.txtTenDangNhap.Text;
@@ -184,6 +192,7 @@ namespace QuanLyQuanKaraoke.Forms
             mnuDanhSachHoaDon.Enabled = false;
             mnuThongKeDichVu.Enabled = false;
             mnuThongKeDoanhThu.Enabled = false;
+            mnuKhuyenMai.Enabled = false;
             // Hiển thị thông tin trên thanh trạng thái
             lblTrangThai.Text = "Chưa đăng nhập.";
         }
@@ -201,6 +210,7 @@ namespace QuanLyQuanKaraoke.Forms
             mnuKhachHang.Enabled = true;
             mnuNhanVien.Enabled = true;
             mnuDanhSachHoaDon.Enabled = true;
+            mnuKhuyenMai.Enabled = true;
             mnuThongKeDichVu.Enabled = true;
             mnuThongKeDoanhThu.Enabled = true;
             // Hiển thị thông tin trên thanh trạng thái
@@ -212,7 +222,7 @@ namespace QuanLyQuanKaraoke.Forms
             mnuDangNhap.Enabled = false;
             // Mờ các chức năng nhân viên không được phép
             mnuLoaiPhong.Enabled = false;
-            mnuPhong.Enabled = true;
+            mnuPhong.Enabled = false;
             mnuDichVu.Enabled = false;
             mnuNhanVien.Enabled = false;
             // Sáng đăng xuất và các chức năng nhân viên được phép
@@ -220,6 +230,8 @@ namespace QuanLyQuanKaraoke.Forms
             mnuDoiMatKhau.Enabled = true;
             mnuKhachHang.Enabled = true;
             mnuDanhSachHoaDon.Enabled = true;
+            mnuKhuyenMai.Enabled = true;
+            // Đóng các chức năng thống kê
             mnuThongKeDichVu.Enabled = false;
             mnuThongKeDoanhThu.Enabled = false;
             // Hiển thị thông tin trên thanh trạng thái
@@ -229,12 +241,15 @@ namespace QuanLyQuanKaraoke.Forms
         private void frmMain_Load(object sender, EventArgs e)
         {
             ChuaDangNhap();
+
+
             DangNhap();
         }
 
         private void mnuDangNhap_Click(object sender, EventArgs e)
         {
             DangNhap();
+
         }
 
         private void mnuDangXuat_Click(object sender, EventArgs e)
@@ -304,6 +319,24 @@ namespace QuanLyQuanKaraoke.Forms
             }
             else
                 thanhToan.Activate();
+        }
+
+        private void mnuThongKeDichVu_Click(object sender, EventArgs e)
+        {
+            if (thongKeDichVu == null || thongKeDichVu.IsDisposed)
+            {
+                thongKeDichVu = new frmThongKeDichVu();
+                thongKeDichVu.MdiParent = this;
+                thongKeDichVu.Show();
+            }
+            else
+                thongKeDichVu.Activate();
+        }
+
+        private void mnuDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            frmDoiMatKhau f = new frmDoiMatKhau();
+            f.ShowDialog();
         }
     }
 }

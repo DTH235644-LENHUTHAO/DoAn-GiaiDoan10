@@ -30,49 +30,36 @@
         {
             lblPhong = new Label();
             lblNhanVien = new Label();
-            cbKhachHang = new ComboBox();
-            label1 = new Label();
             btnMoPhong = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            txtTenKH = new TextBox();
+            txtDienThoai = new TextBox();
             SuspendLayout();
             // 
             // lblPhong
             // 
             lblPhong.AutoSize = true;
-            lblPhong.Location = new Point(170, 83);
+            lblPhong.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblPhong.ForeColor = Color.FromArgb(0, 0, 192);
+            lblPhong.Location = new Point(45, 45);
             lblPhong.Name = "lblPhong";
-            lblPhong.Size = new Size(140, 31);
+            lblPhong.Size = new Size(244, 55);
             lblPhong.TabIndex = 0;
             lblPhong.Text = "Tên Phòng";
             // 
             // lblNhanVien
             // 
             lblNhanVien.AutoSize = true;
-            lblNhanVien.Location = new Point(499, 84);
+            lblNhanVien.Location = new Point(40, 172);
             lblNhanVien.Name = "lblNhanVien";
             lblNhanVien.Size = new Size(190, 31);
             lblNhanVien.TabIndex = 1;
             lblNhanVien.Text = "Tên Nhân Viên";
             // 
-            // cbKhachHang
-            // 
-            cbKhachHang.FormattingEnabled = true;
-            cbKhachHang.Location = new Point(1126, 84);
-            cbKhachHang.Name = "cbKhachHang";
-            cbKhachHang.Size = new Size(297, 39);
-            cbKhachHang.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(890, 87);
-            label1.Name = "label1";
-            label1.Size = new Size(164, 31);
-            label1.TabIndex = 3;
-            label1.Text = "Khách hàng:";
-            // 
             // btnMoPhong
             // 
-            btnMoPhong.Location = new Point(1535, 80);
+            btnMoPhong.Location = new Point(1327, 90);
             btnMoPhong.Name = "btnMoPhong";
             btnMoPhong.Size = new Size(184, 45);
             btnMoPhong.TabIndex = 4;
@@ -80,14 +67,48 @@
             btnMoPhong.UseVisualStyleBackColor = true;
             btnMoPhong.Click += btnMoPhong_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(582, 65);
+            label1.Name = "label1";
+            label1.Size = new Size(217, 31);
+            label1.TabIndex = 5;
+            label1.Text = "Tên khách hàng :";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(616, 138);
+            label2.Name = "label2";
+            label2.Size = new Size(183, 31);
+            label2.TabIndex = 6;
+            label2.Text = "Số điện thoại :";
+            // 
+            // txtTenKH
+            // 
+            txtTenKH.Location = new Point(851, 57);
+            txtTenKH.Name = "txtTenKH";
+            txtTenKH.Size = new Size(356, 39);
+            txtTenKH.TabIndex = 7;
+            // 
+            // txtDienThoai
+            // 
+            txtDienThoai.Location = new Point(851, 130);
+            txtDienThoai.Name = "txtDienThoai";
+            txtDienThoai.Size = new Size(356, 39);
+            txtDienThoai.TabIndex = 8;
+            // 
             // frmMoPhong
             // 
             AutoScaleDimensions = new SizeF(16F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1952, 228);
-            Controls.Add(btnMoPhong);
+            ClientSize = new Size(1574, 228);
+            Controls.Add(txtDienThoai);
+            Controls.Add(txtTenKH);
+            Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(cbKhachHang);
+            Controls.Add(btnMoPhong);
             Controls.Add(lblNhanVien);
             Controls.Add(lblPhong);
             Font = new Font("Times New Roman", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 163);
@@ -102,8 +123,10 @@
 
         private Label lblPhong;
         private Label lblNhanVien;
-        private ComboBox cbKhachHang;
-        private Label label1;
         private Button btnMoPhong;
+        private Label label1;
+        private Label label2;
+        private TextBox txtTenKH;
+        private TextBox txtDienThoai;
     }
 }

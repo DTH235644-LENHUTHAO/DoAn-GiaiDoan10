@@ -25,8 +25,8 @@ namespace QuanLyQuanKaraoke.Forms
         bool xulyThem = false;
         int id;
         //string imagesFolder = Application.StartupPath.Replace("bin\\Debug\\net5.0-windows", "Images");
-        string imagesFolder = Path.Combine(Application.StartupPath, "Images");
-        //string imagesFolder = Application.StartupPath.Replace("bin\\Debug\\net8.0-windows", "Images");
+        //string imagesFolder = Path.Combine(Application.StartupPath, "Images");
+        string imagesFolder = Application.StartupPath.Replace("bin\\Debug\\net8.0-windows", "Images");
         string hinhAnhTam = "";
 
         private void BatTatChucNang(bool giaTri)

@@ -74,6 +74,7 @@ namespace QuanLyQuanKaraoke.Forms
             xulyThem = false;
             BatTatChucNang(true);
             id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value.ToString());
+            txtMatKhau.Clear();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -91,6 +92,11 @@ namespace QuanLyQuanKaraoke.Forms
                     nv.DienThoai = txtDienThoai.Text;
                     nv.TenDangNhap = txtTenDangNhap.Text;
                     //nv.MatKhau = txtMatKhau.Text;
+                    if (string.IsNullOrWhiteSpace(txtMatKhau.Text))
+                    {
+                        MessageBox.Show("Phải nhập mật khẩu!", "Lỗi");
+                        return;
+                    }
                     nv.MatKhau = BCrypt.Net.BCrypt.HashPassword(txtMatKhau.Text);
                     context.NhanVien.Add(nv);
                     context.SaveChanges();
@@ -105,7 +111,11 @@ namespace QuanLyQuanKaraoke.Forms
                         nv.DienThoai = txtDienThoai.Text;
                         nv.TenDangNhap = txtTenDangNhap.Text;
                         //nv.MatKhau = txtMatKhau.Text;
-                        nv.MatKhau = BCrypt.Net.BCrypt.HashPassword(txtMatKhau.Text);
+                        //nv.MatKhau = BCrypt.Net.BCrypt.HashPassword(txtMatKhau.Text);
+                        if (!string.IsNullOrWhiteSpace(txtMatKhau.Text))
+                        {
+                            nv.MatKhau = BCrypt.Net.BCrypt.HashPassword(txtMatKhau.Text);
+                        }
                         context.NhanVien.Update(nv);
                         context.SaveChanges();
                     }

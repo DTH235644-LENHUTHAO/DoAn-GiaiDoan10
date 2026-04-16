@@ -40,7 +40,7 @@ namespace QuanLyQuanKaraoke.Reports
 
             if (hoaDon == null) return;
 
-            var danhSachHoaDon = context.HoaDon.Where(r => r.ID == id).Select(r => new DanhSachHoaDon
+            /*var danhSachHoaDon = context.HoaDon.Where(r => r.ID == id).Select(r => new DanhSachHoaDon
             {
                 ID = r.ID,
                 DatPhongID = r.DatPhongID,
@@ -54,7 +54,7 @@ namespace QuanLyQuanKaraoke.Reports
                 TenKhuyenMai = r.KhuyenMai.TenKhuyenMai,
                 ThoiGianLap = r.ThoiGianLap,
                 TongTien = r.TongTien,
-            }).ToList();
+            }).ToList();*/
 
             var dsDV = context.SuDungDichVu
                 .Where(x => x.DatPhongID == hoaDon.DatPhong.ID)
@@ -121,13 +121,13 @@ namespace QuanLyQuanKaraoke.Reports
             new ReportParameter("KhachHang_Ten", hoaDon.DatPhong.KhachHang.TenKH),
             new ReportParameter("KhachHang_DienThoai", hoaDon.DatPhong.KhachHang.DienThoai),
             new ReportParameter("KhachHang_MaSoThue", ""),
-            new ReportParameter("TongTien", hoaDon.TongTien.ToString()),
+            new ReportParameter("TongTien", hoaDon.TongTien.ToString("N0") + " VNĐ"),
             new ReportParameter("TenPhong", hoaDon.DatPhong.Phong.TenPhong),
-            new ReportParameter("GiaGio", gia.ToString()),
+            new ReportParameter("GiaGio", gia.ToString("N0") + " VNĐ"),
             new ReportParameter("SoGioHat", gio.ToString()),
-            new ReportParameter("TienHat", tienHat.ToString()),
-            new ReportParameter("TienDV", tienDV.ToString()),
-            new ReportParameter("TienGiam", tienGiam.ToString()),
+            new ReportParameter("TienHat", tienHat.ToString("N0") + " VNĐ"),
+            new ReportParameter("TienDV", tienDV.ToString("N0") + " VNĐ"),
+            new ReportParameter("TienGiam", tienGiam.ToString("N0") + " VNĐ"),
             new ReportParameter("TenKhuyenMai", hoaDon.KhuyenMai.TenKhuyenMai),
             new ReportParameter("PhanTramGiam", hoaDon.KhuyenMai.PhanTramGiam.ToString()+"%")
 
