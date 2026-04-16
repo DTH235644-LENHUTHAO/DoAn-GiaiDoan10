@@ -41,12 +41,18 @@ namespace QuanLyQuanKaraoke.Forms
             }).ToList();
             dataGridView1.DataSource = dp;
 
+            dataGridView1.Columns["NhanVienID"].Visible = false;
+            dataGridView1.Columns["KhachHangID"].Visible = false;
+            dataGridView1.Columns["PhongID"].Visible = false;
+            
 
             //tự điều chỉnh kích thước cột theo nội dung
             dataGridView1.Columns["TenKhachHang"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["TenNhanVien"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["ThoiGianBatDau"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["ThoiGianKetThuc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+
         }
 
         private void btnLapHoaDon_Click(object sender, EventArgs e)

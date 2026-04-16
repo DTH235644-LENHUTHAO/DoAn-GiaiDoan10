@@ -33,6 +33,7 @@ namespace QuanLyQuanKaraoke.Forms
             panelPhong.Controls.Clear();
 
             var dsPhong = context.Phong
+                .Where(p => p.TrangThai != "Ngưng hoạt động")
                 .Select(p => new
                 {
                     p.ID,
@@ -51,7 +52,7 @@ namespace QuanLyQuanKaraoke.Forms
                 panel.Tag = p.ID;
                 panel.BorderStyle = BorderStyle.FixedSingle;
 
-                // ===== Picture =====
+                // Picture
                 PictureBox pic = new PictureBox();
                 pic.Dock = DockStyle.Top;
                 pic.Height = 200;
@@ -72,7 +73,7 @@ namespace QuanLyQuanKaraoke.Forms
                     pic.BackColor = Color.Black;
                 }
 
-                // ===== Label =====
+                // Label
                 Label lbl = new Label();
                 lbl.Dock = DockStyle.Fill;
                 lbl.TextAlign = ContentAlignment.MiddleCenter;
@@ -86,15 +87,17 @@ namespace QuanLyQuanKaraoke.Forms
                     p.Gia.ToString("N0") + "đ\n" +
                     (dangHat ? "Đang hát" : "Trống");
 
-                // ===== Màu =====
-                if (p.TrangThai == "Bảo trì")
+                // Màu
+                if (p.TrangThai == "Ngưng hoạt động")
+                    panel.BackColor = Color.Black;
+                else if (p.TrangThai == "Bảo trì")
                     panel.BackColor = Color.Gray;
                 else if (dangHat)
                     panel.BackColor = Color.Red;
                 else
                     panel.BackColor = Color.LightGreen;
 
-                // ===== Click =====
+                // Click
                 panel.Click += Phong_Click;
                 pic.Click += Phong_Click;
                 lbl.Click += Phong_Click;
@@ -118,6 +121,12 @@ namespace QuanLyQuanKaraoke.Forms
                 : Convert.ToInt32(c.Tag);
 
             Phong phong = context.Phong.Find(phongID);
+
+            if (phong.TrangThai == "Ngưng hoạt động")
+            {
+                MessageBox.Show("Phòng đã ngưng hoạt động!");
+                return;
+            }
 
             if (phong.TrangThai == "Bảo trì")
             {

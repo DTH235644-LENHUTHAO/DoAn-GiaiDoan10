@@ -171,15 +171,19 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Xác nhận xóa phòng?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Xác nhận ngưng phòng?", "Xác nhận",
+        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value.ToString());
+
                 Phong p = context.Phong.Find(id);
                 if (p != null)
                 {
-                    context.Phong.Remove(p);
+                    p.TrangThai = "Ngưng hoạt động"; // đổi trạng thái
+                    context.Phong.Update(p);
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
+
                 frmPhong_Load(sender, e);
             }
         }

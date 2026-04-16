@@ -110,11 +110,11 @@
             // btnXoa
             // 
             btnXoa.ForeColor = Color.Red;
-            btnXoa.Location = new Point(723, 404);
+            btnXoa.Location = new Point(708, 404);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(237, 55);
+            btnXoa.Size = new Size(275, 55);
             btnXoa.TabIndex = 8;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "Ngưng hoạt động";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
             // 

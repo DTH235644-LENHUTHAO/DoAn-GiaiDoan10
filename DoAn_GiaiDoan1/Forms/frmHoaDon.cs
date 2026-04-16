@@ -124,11 +124,11 @@ namespace QuanLyQuanKaraoke.Forms
             context.SaveChanges();
 
 
-            var chiTietCu = context.ChiTietHoaDon
+            var chiTiet = context.ChiTietHoaDon
                 .Where(x => x.HoaDonID == hd.ID)
                 .ToList();
 
-            context.ChiTietHoaDon.RemoveRange(chiTietCu);
+            context.ChiTietHoaDon.RemoveRange(chiTiet);
 
             // them vào chi tiết hóa đơn
             context.ChiTietHoaDon.Add(new ChiTietHoaDon

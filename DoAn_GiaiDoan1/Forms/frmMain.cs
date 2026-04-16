@@ -200,7 +200,6 @@ namespace QuanLyQuanKaraoke.Forms
         {
             // Mờ đăng nhập
             mnuDangNhap.Enabled = false;
-            // Mờ các chức năng quản lý không được phép
             // Sáng đăng xuất và các chức năng quản lý được phép
             mnuDangXuat.Enabled = true;
             mnuDoiMatKhau.Enabled = true;
@@ -220,17 +219,17 @@ namespace QuanLyQuanKaraoke.Forms
         {
             // Mờ đăng nhập
             mnuDangNhap.Enabled = false;
-            // Mờ các chức năng nhân viên không được phép
+            // Đóng các chức năng nhân viên không được phép
             mnuLoaiPhong.Enabled = false;
             mnuPhong.Enabled = false;
             mnuDichVu.Enabled = false;
             mnuNhanVien.Enabled = false;
+            mnuKhuyenMai.Enabled = true;
             // Sáng đăng xuất và các chức năng nhân viên được phép
             mnuDangXuat.Enabled = true;
             mnuDoiMatKhau.Enabled = true;
             mnuKhachHang.Enabled = true;
             mnuDanhSachHoaDon.Enabled = true;
-            mnuKhuyenMai.Enabled = true;
             // Đóng các chức năng thống kê
             mnuThongKeDichVu.Enabled = false;
             mnuThongKeDoanhThu.Enabled = false;

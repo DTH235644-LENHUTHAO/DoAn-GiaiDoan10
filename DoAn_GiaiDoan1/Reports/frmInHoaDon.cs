@@ -91,7 +91,12 @@ namespace QuanLyQuanKaraoke.Reports
             reportViewer1.LocalReport.DataSources.Add(reportDataSource);
             reportViewer1.LocalReport.ReportPath = Path.Combine(reportsFolder, "rptInHoaDon.rdlc");
 
-            double gio = Math.Round((hoaDon.DatPhong.ThoiGianKetThuc.Value - hoaDon.DatPhong.ThoiGianBatDau).TotalHours, 3);
+            //double gio = Math.Round((hoaDon.DatPhong.ThoiGianKetThuc.Value - hoaDon.DatPhong.ThoiGianBatDau).TotalHours, 3);
+            //Ghi giờ cho đẹp
+            TimeSpan thoiGian = hoaDon.DatPhong.ThoiGianKetThuc.Value- hoaDon.DatPhong.ThoiGianBatDau;
+            string gio = thoiGian.ToString(@"hh\:mm\:ss");
+
+
             decimal gia = context.Phong
                 .Where(p => p.ID == hoaDon.DatPhong.PhongID)
                 .Select(p => p.LoaiPhong.GiaGio)
