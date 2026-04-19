@@ -16,6 +16,7 @@ namespace QuanLyQuanKaraoke.Data
         public DateTime ThoiGianLap {  get; set; }
         public decimal TongTien {  get; set; }
 
+
         public virtual ObservableCollectionListSource<ChiTietHoaDon> ChiTietHoaDon { get; } = new();
         public virtual KhuyenMai KhuyenMai { get; set; } = null!;
         public virtual ObservableCollectionListSource<ThanhToan> ThanhToan { get; } = new();

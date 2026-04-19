@@ -232,6 +232,9 @@ namespace QuanLyQuanKaraoke.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
+
                     b.HasKey("ID");
 
                     b.ToTable("NhanVien");

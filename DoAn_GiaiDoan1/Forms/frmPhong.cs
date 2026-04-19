@@ -19,6 +19,7 @@ namespace QuanLyQuanKaraoke.Forms
         public frmPhong()
         {
             InitializeComponent();
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
         }
 
         QLQKDbContext context = new QLQKDbContext();
@@ -40,7 +41,7 @@ namespace QuanLyQuanKaraoke.Forms
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
-            btnDoiHinh.Enabled = giaTri ;
+            btnDoiHinh.Enabled = giaTri;
         }
 
         private void frmPhong_Load(object sender, EventArgs e)
@@ -69,8 +70,8 @@ namespace QuanLyQuanKaraoke.Forms
                 })
                 .ToList();*/
 
-            List<DanhSachPhong> p= new List<DanhSachPhong>();
-            p=context.Phong.Select(r=>new DanhSachPhong
+            List<DanhSachPhong> p = new List<DanhSachPhong>();
+            p = context.Phong.Select(r => new DanhSachPhong
             {
                 ID = r.ID,
                 TenPhong = r.TenPhong,
@@ -107,7 +108,7 @@ namespace QuanLyQuanKaraoke.Forms
 
         }
 
-        
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             xulyThem = true;
@@ -122,6 +123,18 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            string trangThai = dataGridView1.CurrentRow.Cells["TrangThai"].Value.ToString();
+
+            // ngưng hoạt động thì không cho sửa
+            if (trangThai == "Ngưng hoạt động")
+            {
+                MessageBox.Show("Phòng đã ngưng hoạt động, không thể chỉnh sửa!",
+                                "Thông báo",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
             xulyThem = false;
             BatTatChucNang(true);
 
@@ -137,6 +150,7 @@ namespace QuanLyQuanKaraoke.Forms
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
+
 
                 if (xulyThem)
                 {
@@ -171,8 +185,7 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Xác nhận ngưng phòng?", "Xác nhận",
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Xác nhận ngưng phòng?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value.ToString());
 
@@ -204,23 +217,7 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            /*if (dataGridView1.Columns[e.ColumnIndex].Name == "HinhAnh")
-            {
-                var fileName = dataGridView1.Rows[e.RowIndex].DataBoundItem as DanhSachPhong;
-
-                if (fileName != null && !string.IsNullOrEmpty(fileName.HinhAnh))
-                {
-                    string path = Path.Combine(imagesFolder, fileName.HinhAnh);
-
-                    if (File.Exists(path))
-                    {
-                        using (var imgTemp = Image.FromFile(path))
-                        {
-                            e.Value = new Bitmap(imgTemp, 40, 40);
-                        }
-                    }
-                }
-            }*/
+            // Kiểm tra nếu cột là cột hình ảnh
             if (dataGridView1.Columns[e.ColumnIndex].Name == "HinhAnh")
             {
                 if (e.Value != null)
@@ -238,6 +235,24 @@ namespace QuanLyQuanKaraoke.Forms
                     }
                 }
             }
+
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "TrangThai")
+            {
+                string trangThai = e.Value?.ToString();
+
+                if (trangThai == "Bình thường")
+                {
+                    e.CellStyle.BackColor = Color.LightGreen;
+                }
+                else if (trangThai == "Ngưng hoạt động")
+                {
+                    e.CellStyle.BackColor = Color.LightCoral;
+                }
+                else if (trangThai == "Bảo trì")
+                {
+                    e.CellStyle.BackColor = Color.Khaki;
+                }
+            }
         }
 
         private void btnDoiHinh_Click(object sender, EventArgs e)
@@ -252,15 +267,10 @@ namespace QuanLyQuanKaraoke.Forms
                 string ext = Path.GetExtension(openFileDialog.FileName);
                 string fileSavePath = Path.Combine(imagesFolder, fileName.GenerateSlug() + ext);
                 File.Copy(openFileDialog.FileName, fileSavePath, true);
-                /*id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value.ToString());
-                Phong p = context.Phong.Find(id);
-                p.HinhAnh = fileName.GenerateSlug() + ext;
-                context.Phong.Update(p);
-                context.SaveChanges();
-                frmPhong_Load(sender, e);*/
+                
                 picHinhAnh.ImageLocation = fileSavePath;
 
-                
+
                 hinhAnhTam = fileName.GenerateSlug() + ext;
             }
         }
@@ -279,13 +289,46 @@ namespace QuanLyQuanKaraoke.Forms
                 string savePath = Path.Combine(imagesFolder, newName);
                 File.Copy(ofd.FileName, savePath, true);
 
-                
+
                 picHinhAnh.ImageLocation = savePath;
 
-                
+
                 hinhAnhTam = newName;
             }
         }
+
+        private void btnKichHoat_Click(object sender, EventArgs e)
+        {
+            /*id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value.ToString());
+
+            Phong p = context.Phong.Find(id);
+            if (p != null)
+            {
+                p.TrangThai = "Bình thường";
+                context.Phong.Update(p);
+                context.SaveChanges();
+            }
+
+            frmPhong_Load(sender, e);*/
+        }
+
+        private void btnKichHoat_Click_1(object sender, EventArgs e)
+        {
+            id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IDPhong"].Value.ToString());
+
+            Phong p = context.Phong.Find(id);
+            if (p != null)
+            {
+                p.TrangThai = "Bình thường";
+                context.Phong.Update(p);
+                context.SaveChanges();
+            }
+
+            frmPhong_Load(sender, e);
+        }
+
+
+
     }
 }
 

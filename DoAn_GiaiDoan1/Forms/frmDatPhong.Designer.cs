@@ -41,6 +41,7 @@
             ThoiGianKetThuc = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
             btnLapHoaDon = new Button();
+            btnReset = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -139,6 +140,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnReset);
             groupBox2.Controls.Add(btnLapHoaDon);
             groupBox2.Location = new Point(22, 19);
             groupBox2.Margin = new Padding(4);
@@ -151,13 +153,26 @@
             // btnLapHoaDon
             // 
             btnLapHoaDon.ForeColor = Color.Green;
-            btnLapHoaDon.Location = new Point(1629, 60);
+            btnLapHoaDon.Location = new Point(1580, 67);
             btnLapHoaDon.Name = "btnLapHoaDon";
             btnLapHoaDon.Size = new Size(225, 67);
             btnLapHoaDon.TabIndex = 0;
             btnLapHoaDon.Text = "Lập hóa đơn";
             btnLapHoaDon.UseVisualStyleBackColor = true;
             btnLapHoaDon.Click += btnLapHoaDon_Click;
+            // 
+            // btnReset
+            // 
+            btnReset.BackColor = SystemColors.ButtonFace;
+            btnReset.Font = new Font("Times New Roman", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnReset.ForeColor = Color.Green;
+            btnReset.Location = new Point(1838, 64);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(117, 70);
+            btnReset.TabIndex = 4;
+            btnReset.Text = "🔄️";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // frmDatPhong
             // 
@@ -192,5 +207,6 @@
         private DataGridViewTextBoxColumn ThoiGianBatDau;
         private DataGridViewTextBoxColumn ThoiGianKetThuc;
         private Button btnLapHoaDon;
+        private Button btnReset;
     }
 }

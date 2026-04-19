@@ -50,6 +50,7 @@
             GiaGio = new DataGridViewTextBoxColumn();
             HinhAnh = new DataGridViewImageColumn();
             groupBox1 = new GroupBox();
+            btnKichHoat = new Button();
             cboTrangThai = new ComboBox();
             btnThemAnh = new Button();
             btnDoiHinh = new Button();
@@ -78,7 +79,7 @@
             // 
             // btnThoat
             // 
-            btnThoat.Location = new Point(1683, 404);
+            btnThoat.Location = new Point(1750, 404);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(237, 55);
             btnThoat.TabIndex = 11;
@@ -88,7 +89,7 @@
             // 
             // btnHuyBo
             // 
-            btnHuyBo.Location = new Point(1363, 405);
+            btnHuyBo.Location = new Point(1476, 405);
             btnHuyBo.Name = "btnHuyBo";
             btnHuyBo.Size = new Size(237, 55);
             btnHuyBo.TabIndex = 10;
@@ -99,7 +100,7 @@
             // btnLuu
             // 
             btnLuu.ForeColor = Color.DeepSkyBlue;
-            btnLuu.Location = new Point(1043, 405);
+            btnLuu.Location = new Point(1206, 405);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(237, 55);
             btnLuu.TabIndex = 9;
@@ -110,7 +111,7 @@
             // btnXoa
             // 
             btnXoa.ForeColor = Color.Red;
-            btnXoa.Location = new Point(708, 404);
+            btnXoa.Location = new Point(617, 404);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(275, 55);
             btnXoa.TabIndex = 8;
@@ -120,7 +121,7 @@
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(404, 403);
+            btnSua.Location = new Point(349, 403);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(237, 55);
             btnSua.TabIndex = 7;
@@ -254,6 +255,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnKichHoat);
             groupBox1.Controls.Add(cboTrangThai);
             groupBox1.Controls.Add(btnThemAnh);
             groupBox1.Controls.Add(btnDoiHinh);
@@ -278,6 +280,17 @@
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin phòng";
+            // 
+            // btnKichHoat
+            // 
+            btnKichHoat.ForeColor = Color.Blue;
+            btnKichHoat.Location = new Point(928, 404);
+            btnKichHoat.Name = "btnKichHoat";
+            btnKichHoat.Size = new Size(237, 55);
+            btnKichHoat.TabIndex = 19;
+            btnKichHoat.Text = "Kích hoạt";
+            btnKichHoat.UseVisualStyleBackColor = true;
+            btnKichHoat.Click += btnKichHoat_Click_1;
             // 
             // cboTrangThai
             // 
@@ -374,5 +387,6 @@
         private DataGridViewTextBoxColumn GiaGio;
         private DataGridViewImageColumn HinhAnh;
         private ComboBox cboTrangThai;
+        private Button btnKichHoat;
     }
 }

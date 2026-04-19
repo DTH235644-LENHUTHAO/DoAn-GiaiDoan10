@@ -36,7 +36,6 @@
             btnSua = new Button();
             btnThem = new Button();
             txtDienThoai = new TextBox();
-            txtChucVu = new TextBox();
             dataGridView1 = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             TenNV = new DataGridViewTextBoxColumn();
@@ -44,18 +43,23 @@
             DienThaoi = new DataGridViewTextBoxColumn();
             TenDangNhap = new DataGridViewTextBoxColumn();
             MatKhau = new DataGridViewTextBoxColumn();
+            TrangThai = new DataGridViewCheckBoxColumn();
             txtTenNV = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
             groupBox1 = new GroupBox();
+            cboChucVu = new ComboBox();
+            chkTrangThai = new CheckBox();
+            label6 = new Label();
             txtMatKhau = new TextBox();
             label5 = new Label();
             txtTenDangNhap = new TextBox();
             label4 = new Label();
             btnNhap = new Button();
             btnXuat = new Button();
+            btnKhoiPhuc = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -138,22 +142,13 @@
             txtDienThoai.Size = new Size(511, 50);
             txtDienThoai.TabIndex = 5;
             // 
-            // txtChucVu
-            // 
-            txtChucVu.Location = new Point(378, 135);
-            txtChucVu.Margin = new Padding(4);
-            txtChucVu.Multiline = true;
-            txtChucVu.Name = "txtChucVu";
-            txtChucVu.Size = new Size(511, 50);
-            txtChucVu.TabIndex = 4;
-            // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenNV, ChucVu, DienThaoi, TenDangNhap, MatKhau });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, TenNV, ChucVu, DienThaoi, TenDangNhap, MatKhau, TrangThai });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 40);
             dataGridView1.MultiSelect = false;
@@ -204,6 +199,13 @@
             MatKhau.MinimumWidth = 10;
             MatKhau.Name = "MatKhau";
             // 
+            // TrangThai
+            // 
+            TrangThai.DataPropertyName = "TrangThai";
+            TrangThai.HeaderText = "Trạng thái";
+            TrangThai.MinimumWidth = 10;
+            TrangThai.Name = "TrangThai";
+            // 
             // txtTenNV
             // 
             txtTenNV.Location = new Point(378, 64);
@@ -246,7 +248,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(dataGridView1);
-            groupBox2.Location = new Point(30, 399);
+            groupBox2.Location = new Point(30, 553);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(1722, 722);
             groupBox2.TabIndex = 3;
@@ -255,6 +257,10 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnKhoiPhuc);
+            groupBox1.Controls.Add(cboChucVu);
+            groupBox1.Controls.Add(chkTrangThai);
+            groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(txtMatKhau);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(txtTenDangNhap);
@@ -266,7 +272,6 @@
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(txtDienThoai);
-            groupBox1.Controls.Add(txtChucVu);
             groupBox1.Controls.Add(txtTenNV);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
@@ -275,24 +280,54 @@
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 3, 4, 3);
-            groupBox1.Size = new Size(1722, 367);
+            groupBox1.Size = new Size(1722, 479);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin nhân viên ";
             // 
+            // cboChucVu
+            // 
+            cboChucVu.FormattingEnabled = true;
+            cboChucVu.Items.AddRange(new object[] { "Quản lý", "Nhân viên" });
+            cboChucVu.Location = new Point(379, 140);
+            cboChucVu.Name = "cboChucVu";
+            cboChucVu.Size = new Size(510, 44);
+            cboChucVu.TabIndex = 18;
+            // 
+            // chkTrangThai
+            // 
+            chkTrangThai.AutoSize = true;
+            chkTrangThai.Location = new Point(1200, 383);
+            chkTrangThai.Name = "chkTrangThai";
+            chkTrangThai.Size = new Size(180, 40);
+            chkTrangThai.TabIndex = 17;
+            chkTrangThai.Text = "Đang làm";
+            chkTrangThai.UseVisualStyleBackColor = true;
+            chkTrangThai.CheckedChanged += chkTrangThai_CheckedChanged;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(968, 381);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(179, 36);
+            label6.TabIndex = 16;
+            label6.Text = "Trạng thái :";
+            // 
             // txtMatKhau
             // 
-            txtMatKhau.Location = new Point(1170, 286);
+            txtMatKhau.Location = new Point(378, 373);
             txtMatKhau.Margin = new Padding(4);
             txtMatKhau.Multiline = true;
             txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(421, 50);
+            txtMatKhau.Size = new Size(511, 50);
             txtMatKhau.TabIndex = 15;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(955, 300);
+            label5.Location = new Point(84, 381);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(169, 36);
@@ -321,7 +356,7 @@
             // btnNhap
             // 
             btnNhap.ForeColor = Color.DeepSkyBlue;
-            btnNhap.Location = new Point(922, 1166);
+            btnNhap.Location = new Point(922, 1320);
             btnNhap.Name = "btnNhap";
             btnNhap.Size = new Size(237, 55);
             btnNhap.TabIndex = 11;
@@ -332,7 +367,7 @@
             // btnXuat
             // 
             btnXuat.ForeColor = Color.Red;
-            btnXuat.Location = new Point(602, 1165);
+            btnXuat.Location = new Point(602, 1319);
             btnXuat.Name = "btnXuat";
             btnXuat.Size = new Size(237, 55);
             btnXuat.TabIndex = 10;
@@ -340,11 +375,22 @@
             btnXuat.UseVisualStyleBackColor = true;
             btnXuat.Click += btnXuat_Click;
             // 
+            // btnKhoiPhuc
+            // 
+            btnKhoiPhuc.ForeColor = Color.Blue;
+            btnKhoiPhuc.Location = new Point(1436, 375);
+            btnKhoiPhuc.Name = "btnKhoiPhuc";
+            btnKhoiPhuc.Size = new Size(248, 55);
+            btnKhoiPhuc.TabIndex = 19;
+            btnKhoiPhuc.Text = "Khôi phục NV";
+            btnKhoiPhuc.UseVisualStyleBackColor = true;
+            btnKhoiPhuc.Click += btnKhoiPhuc_Click;
+            // 
             // frmNhanVien
             // 
             AutoScaleDimensions = new SizeF(19F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1786, 1259);
+            ClientSize = new Size(1786, 1413);
             Controls.Add(btnNhap);
             Controls.Add(btnXuat);
             Controls.Add(groupBox2);
@@ -371,7 +417,6 @@
         private Button btnSua;
         private Button btnThem;
         private TextBox txtDienThoai;
-        private TextBox txtChucVu;
         private DataGridView dataGridView1;
         private TextBox txtTenNV;
         private Label label3;
@@ -385,11 +430,16 @@
         private Label label5;
         private TextBox txtTenDangNhap;
         private Label label4;
+        private Label label6;
+        private CheckBox chkTrangThai;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn TenNV;
         private DataGridViewTextBoxColumn ChucVu;
         private DataGridViewTextBoxColumn DienThaoi;
         private DataGridViewTextBoxColumn TenDangNhap;
         private DataGridViewTextBoxColumn MatKhau;
+        private DataGridViewCheckBoxColumn TrangThai;
+        private ComboBox cboChucVu;
+        private Button btnKhoiPhuc;
     }
 }

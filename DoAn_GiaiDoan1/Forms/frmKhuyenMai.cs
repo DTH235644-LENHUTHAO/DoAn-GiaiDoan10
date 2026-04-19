@@ -73,6 +73,12 @@ namespace QuanLyQuanKaraoke.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if (phantramGiam < 0 || phantramGiam > 100)
+                {
+                    MessageBox.Show("Phần trăm giảm phải từ 0 đến 100!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (xulyThem)
                 {
                     KhuyenMai km = new KhuyenMai();

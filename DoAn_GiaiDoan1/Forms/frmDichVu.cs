@@ -73,6 +73,18 @@ namespace QuanLyQuanKaraoke.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if(donGia < 0)
+                {
+                    MessageBox.Show("Đơn giá phải lớn hơn hoặc bằng 0!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (context.DichVu.Any(d => d.TenDV == txtTenDV.Text && (xulyThem || d.ID != id)))
+                {
+                    MessageBox.Show("Dịch vụ đã tồn tại! Bạn có thể sửa lại dịch vụ !", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (xulyThem)
                 {
                     DichVu dv = new DichVu();

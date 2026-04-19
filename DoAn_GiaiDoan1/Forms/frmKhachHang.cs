@@ -70,10 +70,38 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+
+
+
             if (string.IsNullOrWhiteSpace(txtTenKH.Text) || string.IsNullOrWhiteSpace(txtDienThoai.Text))
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
             {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!txtDienThoai.Text.All(char.IsDigit) || txtDienThoai.Text.Length != 10)
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ!");
+                return;
+            }
+            if (txtTenKH.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("Tên khách hàng không được chứa số!");
+                return;
+            }
+            // Kiểm tra trùng số điện thoại
+            bool tonTai;
+
+            if (xulyThem)
+                tonTai = context.KhachHang.Any(x => x.DienThoai == txtDienThoai.Text);
+            else
+                tonTai = context.KhachHang.Any(x => x.DienThoai == txtDienThoai.Text && x.ID != id);
+
+            if (tonTai)
+            {
+                MessageBox.Show("Số điện thoại đã tồn tại!");
+                return;
+            }
+
                 if (xulyThem)
                 {
                     KhachHang kh = new KhachHang();
@@ -94,7 +122,7 @@ namespace QuanLyQuanKaraoke.Forms
                     }
                 }
                 frmKhachHang_Load(sender, e);
-            }
+     
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

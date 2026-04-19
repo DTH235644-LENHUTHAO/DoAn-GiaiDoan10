@@ -25,7 +25,7 @@ namespace QuanLyQuanKaraoke.Forms
         {
             dataGridView1.AutoGenerateColumns = false;
             List<DanhSachHoaDon> hd = new List<DanhSachHoaDon>();
-            hd = context.HoaDon.Select(r => new DanhSachHoaDon
+            hd = context.HoaDon.OrderByDescending(r => r.ThoiGianLap).Select(r => new DanhSachHoaDon
             {
                 ID = r.ID,
                 DatPhongID = r.DatPhongID,
@@ -87,6 +87,11 @@ namespace QuanLyQuanKaraoke.Forms
             {
                 inHoaDon.ShowDialog();
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            frmDanhSachHoaDon_Load(sender, e);
         }
     }
 }

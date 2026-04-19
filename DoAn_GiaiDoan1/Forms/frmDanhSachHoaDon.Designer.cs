@@ -46,6 +46,7 @@
             TongTien = new DataGridViewTextBoxColumn();
             XemChiTiet = new DataGridViewLinkColumn();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            btnReset = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -53,6 +54,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnReset);
             groupBox1.Controls.Add(btnInHoaDon);
             groupBox1.Location = new Point(25, 22);
             groupBox1.Name = "groupBox1";
@@ -63,9 +65,9 @@
             // btnInHoaDon
             // 
             btnInHoaDon.ForeColor = Color.FromArgb(0, 192, 0);
-            btnInHoaDon.Location = new Point(1613, 49);
+            btnInHoaDon.Location = new Point(1563, 49);
             btnInHoaDon.Name = "btnInHoaDon";
-            btnInHoaDon.Size = new Size(252, 60);
+            btnInHoaDon.Size = new Size(252, 70);
             btnInHoaDon.TabIndex = 0;
             btnInHoaDon.Text = "In hóa đơn";
             btnInHoaDon.UseVisualStyleBackColor = true;
@@ -192,6 +194,19 @@
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
+            // btnReset
+            // 
+            btnReset.BackColor = SystemColors.ButtonFace;
+            btnReset.Font = new Font("Times New Roman", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnReset.ForeColor = Color.Green;
+            btnReset.Location = new Point(1831, 49);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(117, 70);
+            btnReset.TabIndex = 5;
+            btnReset.Text = "🔄️";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
+            // 
             // frmDanhSachHoaDon
             // 
             AutoScaleDimensions = new SizeF(19F, 36F);
@@ -230,5 +245,6 @@
         private DataGridViewTextBoxColumn TongTien;
         private DataGridViewLinkColumn XemChiTiet;
         private Button btnInHoaDon;
+        private Button btnReset;
     }
 }

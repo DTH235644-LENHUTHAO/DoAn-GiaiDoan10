@@ -28,23 +28,23 @@ namespace QuanLyQuanKaraoke.Forms
                 .OrderBy(r => r.ThoiGianKetThuc == null ? 0 : 1) // đang hát lên trước
                 .ThenByDescending(r => r.ThoiGianBatDau) // mới nhất
                 .Select(r => new DanhSachDatPhong
-            {
-                ID = r.ID,
-                PhongID = r.PhongID,
-                TenPhong = r.Phong.TenPhong,
-                KhachHangID = r.KhachHangID,
-                TenKhachHang = r.KhachHang.TenKH,
-                NhanVienID = r.NhanVienID,
-                TenNhanVien = r.NhanVien.TenNV,
-                ThoiGianBatDau = r.ThoiGianBatDau,
-                ThoiGianKetThuc = r.ThoiGianKetThuc
-            }).ToList();
+                {
+                    ID = r.ID,
+                    PhongID = r.PhongID,
+                    TenPhong = r.Phong.TenPhong,
+                    KhachHangID = r.KhachHangID,
+                    TenKhachHang = r.KhachHang.TenKH,
+                    NhanVienID = r.NhanVienID,
+                    TenNhanVien = r.NhanVien.TenNV,
+                    ThoiGianBatDau = r.ThoiGianBatDau,
+                    ThoiGianKetThuc = r.ThoiGianKetThuc
+                }).ToList();
             dataGridView1.DataSource = dp;
 
             dataGridView1.Columns["NhanVienID"].Visible = false;
             dataGridView1.Columns["KhachHangID"].Visible = false;
             dataGridView1.Columns["PhongID"].Visible = false;
-            
+
 
             //tự điều chỉnh kích thước cột theo nội dung
             dataGridView1.Columns["TenKhachHang"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -67,6 +67,11 @@ namespace QuanLyQuanKaraoke.Forms
 
             frmHoaDon f = new frmHoaDon(datPhongID);
             f.ShowDialog();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            frmDatPhong_Load(sender, e);
         }
     }
 }

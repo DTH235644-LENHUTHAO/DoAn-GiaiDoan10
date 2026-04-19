@@ -12,7 +12,7 @@ using QuanLyQuanKaraoke.Data;
 namespace QuanLyQuanKaraoke.Migrations
 {
     [DbContext(typeof(QLQKDbContext))]
-    [Migration("20260416073405_KhoiTaoCSDL")]
+    [Migration("20260417015323_KhoiTaoCSDL")]
     partial class KhoiTaoCSDL
     {
         /// <inheritdoc />
@@ -234,6 +234,9 @@ namespace QuanLyQuanKaraoke.Migrations
                     b.Property<string>("TenNV")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
 
                     b.HasKey("ID");
 

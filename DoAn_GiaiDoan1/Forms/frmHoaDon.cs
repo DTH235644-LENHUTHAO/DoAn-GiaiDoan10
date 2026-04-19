@@ -125,6 +125,7 @@ namespace QuanLyQuanKaraoke.Forms
             hd.TongTien = tongTien;
             hd.KhuyenMaiID = khuyenMaiID;
 
+
             context.SaveChanges();
 
 
@@ -146,6 +147,8 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void btnTinhTien_Click(object sender, EventArgs e)
         {
+
+
             var hoaDon = context.HoaDon
                 .FirstOrDefault(x => x.DatPhongID == datPhongID);
 
@@ -172,6 +175,12 @@ namespace QuanLyQuanKaraoke.Forms
                 .Where(x => x.HoaDonID == hoaDon.ID && x.Loai == "KhuyenMai");
 
             context.ChiTietHoaDon.RemoveRange(giamGiaCu);
+
+            if (cboKhuyenMai.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn thông tin cho khuyến mãi!");
+                return;
+            }
 
             // LẤY KHUYẾN MÃI
             if (cboKhuyenMai.SelectedValue != null)

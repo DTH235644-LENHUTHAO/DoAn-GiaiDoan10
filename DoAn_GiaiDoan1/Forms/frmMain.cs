@@ -159,6 +159,13 @@ namespace QuanLyQuanKaraoke.Forms
                     {
                         if (BCrypt.Net.BCrypt.Verify(matKhau, nhanVien.MatKhau))
                         {
+                            if (nhanVien.TrangThai == false)
+                            {
+                                MessageBox.Show("Tài khoản đã ngừng hoạt động!", "Lỗi",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                goto LamLai;
+                            }
+
                             TenNhanVien = nhanVien.TenNV;
                             NVID = nhanVien.ID;
                             if (nhanVien.ChucVu == "Quản lý")
@@ -228,12 +235,12 @@ namespace QuanLyQuanKaraoke.Forms
             mnuPhong.Enabled = false;
             mnuDichVu.Enabled = false;
             mnuNhanVien.Enabled = false;
-            mnuKhuyenMai.Enabled = true;
+            mnuKhuyenMai.Enabled = false;
+            mnuKhachHang.Enabled = true;
 
             // Sáng đăng xuất và các chức năng nhân viên được phép
             mnuDangXuat.Enabled = true;
             mnuDoiMatKhau.Enabled = true;
-            mnuKhachHang.Enabled = true;
             mnuDanhSachHoaDon.Enabled = true;
             // Đóng các chức năng thống kê
             mnuThongKeDichVu.Enabled = false;

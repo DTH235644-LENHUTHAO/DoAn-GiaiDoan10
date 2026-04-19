@@ -78,7 +78,8 @@ namespace QuanLyQuanKaraoke.Migrations
                     ChucVu = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DienThoai = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TenDangNhap = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MatKhau = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    MatKhau = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -39,7 +39,7 @@
             groupBox2.Controls.Add(panelPhong);
             groupBox2.Location = new Point(12, 145);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1321, 699);
+            groupBox2.Size = new Size(1381, 699);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách phòng";
@@ -50,7 +50,7 @@
             panelPhong.Dock = DockStyle.Fill;
             panelPhong.Location = new Point(3, 40);
             panelPhong.Name = "panelPhong";
-            panelPhong.Size = new Size(1315, 656);
+            panelPhong.Size = new Size(1375, 656);
             panelPhong.TabIndex = 0;
             // 
             // btnReset
@@ -58,9 +58,9 @@
             btnReset.BackColor = SystemColors.ButtonFace;
             btnReset.Font = new Font("Times New Roman", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnReset.ForeColor = Color.Green;
-            btnReset.Location = new Point(1226, 45);
+            btnReset.Location = new Point(1276, 45);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(80, 70);
+            btnReset.Size = new Size(117, 70);
             btnReset.TabIndex = 3;
             btnReset.Text = "🔄️";
             btnReset.UseVisualStyleBackColor = false;
@@ -70,7 +70,7 @@
             // 
             AutoScaleDimensions = new SizeF(19F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1345, 856);
+            ClientSize = new Size(1411, 856);
             Controls.Add(btnReset);
             Controls.Add(groupBox2);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);

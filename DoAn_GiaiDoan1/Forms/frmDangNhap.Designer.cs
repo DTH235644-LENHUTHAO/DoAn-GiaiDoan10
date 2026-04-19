@@ -146,6 +146,7 @@
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             Margin = new Padding(4, 3, 4, 3);
             Name = "frmDangNhap";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

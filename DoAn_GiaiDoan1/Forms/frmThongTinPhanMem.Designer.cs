@@ -45,7 +45,7 @@
             // 
             pictureBox1.BackColor = Color.MediumTurquoise;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(61, 67);
+            pictureBox1.Location = new Point(85, 67);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(291, 295);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
