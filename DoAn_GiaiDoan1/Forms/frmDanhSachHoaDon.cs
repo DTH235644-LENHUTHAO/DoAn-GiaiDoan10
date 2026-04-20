@@ -47,6 +47,8 @@ namespace QuanLyQuanKaraoke.Forms
 
             dataGridView1.DataSource = bs;
 
+            dataGridView1.Columns["TongTien"].DefaultCellStyle.Format = "#,##0 'VNĐ'";
+
             //ẩn id 
             dataGridView1.Columns["NhanVienID"].Visible = false;
             dataGridView1.Columns["KhachHangID"].Visible = false;
@@ -58,6 +60,8 @@ namespace QuanLyQuanKaraoke.Forms
             dataGridView1.Columns["TenKH"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["TenKhuyenMai"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["ThoiGianLap"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["TongTien"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns["XemChiTiet"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         }
 

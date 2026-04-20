@@ -44,6 +44,7 @@ namespace QuanLyQuanKaraoke.Forms
             txtDonGia.DataBindings.Clear();
             txtDonGia.DataBindings.Add("Text", bindingSource, "DonGia", false, DataSourceUpdateMode.Never);
             dataGridView1.DataSource = bindingSource;
+            dataGridView1.Columns["DonGia"].DefaultCellStyle.Format = "#,##0 'VNĐ'";
         }
 
         private void btnThem_Click(object sender, EventArgs e)

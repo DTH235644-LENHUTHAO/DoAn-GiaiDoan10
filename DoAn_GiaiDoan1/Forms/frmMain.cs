@@ -202,6 +202,9 @@ namespace QuanLyQuanKaraoke.Forms
             mnuThongKeDichVu.Enabled = false;
             mnuThongKeDoanhThu.Enabled = false;
             mnuKhuyenMai.Enabled = false;
+            mnuThanhToan.Enabled= false;
+            mnuDanhSachPhong.Enabled = false;
+            mnuLichSuDungPhong.Enabled = false;
 
             // Hiển thị thông tin trên thanh trạng thái
             lblTrangThai.Text = "Chưa đăng nhập.";
@@ -222,6 +225,9 @@ namespace QuanLyQuanKaraoke.Forms
             mnuKhuyenMai.Enabled = true;
             mnuThongKeDichVu.Enabled = true;
             mnuThongKeDoanhThu.Enabled = true;
+            mnuThanhToan.Enabled = true;
+            mnuDanhSachPhong.Enabled = true;
+            mnuLichSuDungPhong.Enabled = true;
 
             // Hiển thị thông tin trên thanh trạng thái
             lblTrangThai.Text = "Quản lý: " + TenNhanVien;
@@ -236,12 +242,16 @@ namespace QuanLyQuanKaraoke.Forms
             mnuDichVu.Enabled = false;
             mnuNhanVien.Enabled = false;
             mnuKhuyenMai.Enabled = false;
-            mnuKhachHang.Enabled = true;
+
 
             // Sáng đăng xuất và các chức năng nhân viên được phép
+            mnuKhachHang.Enabled = true;
             mnuDangXuat.Enabled = true;
             mnuDoiMatKhau.Enabled = true;
             mnuDanhSachHoaDon.Enabled = true;
+            mnuThanhToan.Enabled = true;
+            mnuDanhSachPhong.Enabled = true;
+            mnuLichSuDungPhong.Enabled = true;
             // Đóng các chức năng thống kê
             mnuThongKeDichVu.Enabled = false;
             mnuThongKeDoanhThu.Enabled = false;

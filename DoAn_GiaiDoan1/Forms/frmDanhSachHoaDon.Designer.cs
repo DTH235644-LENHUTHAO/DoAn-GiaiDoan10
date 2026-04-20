@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnReset = new Button();
             btnInHoaDon = new Button();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
@@ -46,7 +47,6 @@
             TongTien = new DataGridViewTextBoxColumn();
             XemChiTiet = new DataGridViewLinkColumn();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            btnReset = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -58,14 +58,27 @@
             groupBox1.Controls.Add(btnInHoaDon);
             groupBox1.Location = new Point(25, 22);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1948, 141);
+            groupBox1.Size = new Size(2435, 141);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
+            // 
+            // btnReset
+            // 
+            btnReset.BackColor = SystemColors.ButtonFace;
+            btnReset.Font = new Font("Times New Roman", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnReset.ForeColor = Color.Green;
+            btnReset.Location = new Point(2316, 43);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(117, 70);
+            btnReset.TabIndex = 5;
+            btnReset.Text = "🔄️";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // btnInHoaDon
             // 
             btnInHoaDon.ForeColor = Color.FromArgb(0, 192, 0);
-            btnInHoaDon.Location = new Point(1563, 49);
+            btnInHoaDon.Location = new Point(2048, 43);
             btnInHoaDon.Name = "btnInHoaDon";
             btnInHoaDon.Size = new Size(252, 70);
             btnInHoaDon.TabIndex = 0;
@@ -78,7 +91,7 @@
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Location = new Point(23, 185);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1950, 578);
+            groupBox2.Size = new Size(2440, 817);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Hóa đơn đã lập";
@@ -95,7 +108,7 @@
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(1944, 535);
+            dataGridView1.Size = new Size(2434, 774);
             dataGridView1.TabIndex = 1;
             // 
             // ID
@@ -194,24 +207,11 @@
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
-            // btnReset
-            // 
-            btnReset.BackColor = SystemColors.ButtonFace;
-            btnReset.Font = new Font("Times New Roman", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnReset.ForeColor = Color.Green;
-            btnReset.Location = new Point(1831, 49);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(117, 70);
-            btnReset.TabIndex = 5;
-            btnReset.Text = "🔄️";
-            btnReset.UseVisualStyleBackColor = false;
-            btnReset.Click += btnReset_Click;
-            // 
             // frmDanhSachHoaDon
             // 
             AutoScaleDimensions = new SizeF(19F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1995, 791);
+            ClientSize = new Size(2498, 1028);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);

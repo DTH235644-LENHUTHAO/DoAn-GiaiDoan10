@@ -49,6 +49,7 @@ namespace QuanLyQuanKaraoke.Forms
             txtGiaGio.DataBindings.Clear();
             txtGiaGio.DataBindings.Add("Text", bindingSource, "GiaGio", false, DataSourceUpdateMode.Never);
             dataGridView1.DataSource = bindingSource;
+            dataGridView1.Columns["GiaGio"].DefaultCellStyle.Format = "#,##0 'VNĐ'";
         }
 
         private void btnThem_Click(object sender, EventArgs e)

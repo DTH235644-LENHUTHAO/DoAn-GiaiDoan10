@@ -104,6 +104,7 @@ namespace QuanLyQuanKaraoke.Forms
             picHinhAnh.DataBindings.Add(hinhAnh);
 
             dataGridView1.DataSource = bs;
+            dataGridView1.Columns["GiaGio"].DefaultCellStyle.Format = "#,##0 'VNĐ'";
 
 
         }

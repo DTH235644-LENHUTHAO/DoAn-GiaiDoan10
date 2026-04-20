@@ -44,6 +44,7 @@ namespace QuanLyQuanKaraoke.Forms
             txtPhanTramGiam.DataBindings.Clear();
             txtPhanTramGiam.DataBindings.Add("Text", bindingSource, "PhanTramGiam", false, DataSourceUpdateMode.Never);
             dataGridView1.DataSource = bindingSource;
+            dataGridView1.Columns["PhanTramGiam"].DefaultCellStyle.Format = "0.##' %'";
         }
 
         private void btnThem_Click(object sender, EventArgs e)

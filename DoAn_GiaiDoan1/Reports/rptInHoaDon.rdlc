@@ -620,7 +620,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox30</rd:DefaultName>
@@ -650,7 +652,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox34</rd:DefaultName>
@@ -680,7 +684,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox17</rd:DefaultName>
@@ -710,7 +716,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox31</rd:DefaultName>
@@ -740,7 +748,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
@@ -775,7 +785,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ID</rd:DefaultName>
@@ -805,7 +817,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Ten</rd:DefaultName>
@@ -835,7 +849,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>SoLuong</rd:DefaultName>
@@ -861,11 +877,13 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!DonGia.Value</Value>
+                                  <Value>=Format(Fields!DonGia.Value, "N0") &amp; " VNĐ"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>DonGia</rd:DefaultName>
@@ -891,11 +909,13 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ThanhTien.Value</Value>
+                                  <Value>=Format(Fields!ThanhTien.Value, "N0") &amp; " VNĐ"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>ThanhTien</rd:DefaultName>
@@ -974,7 +994,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox59</rd:DefaultName>
@@ -1021,7 +1043,7 @@
             <Top>10.62481cm</Top>
             <Left>0cm</Left>
             <Height>1.8cm</Height>
-            <Width>17.07537cm</Width>
+            <Width>17.07538cm</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -1044,10 +1066,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>12.85669cm</Top>
-            <Left>9.485cm</Left>
+            <Top>12.85668cm</Top>
+            <Left>9.82895cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.32021cm</Width>
+            <Width>3.06886cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1075,9 +1097,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>13.63307cm</Top>
-            <Left>9.485cm</Left>
+            <Left>9.73635cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.32021cm</Width>
+            <Width>3.16146cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
@@ -1107,7 +1129,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>14.40946cm</Top>
-            <Left>10.4375cm</Left>
+            <Left>10.50364cm</Left>
             <Height>0.6cm</Height>
             <Width>2.39417cm</Width>
             <ZIndex>19</ZIndex>
@@ -1132,7 +1154,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox42</rd:DefaultName>
@@ -1162,7 +1186,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox42</rd:DefaultName>
@@ -1194,7 +1220,9 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox42</rd:DefaultName>
@@ -1230,10 +1258,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox45</rd:DefaultName>
-            <Top>15.38235cm</Top>
-            <Left>8.85cm</Left>
+            <Top>15.18585cm</Top>
+            <Left>8.70448cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.04781cm</Width>
+            <Width>4.19333cm</Width>
             <ZIndex>23</ZIndex>
             <Style>
               <Border>
@@ -1258,7 +1286,9 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox42</rd:DefaultName>

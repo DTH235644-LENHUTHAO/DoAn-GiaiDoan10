@@ -40,7 +40,8 @@ namespace QuanLyQuanKaraoke.Forms
 
             dataGridView1.DataSource = bs;
 
-            dataGridView1.Columns["HoaDonID"].Visible = false;
+            dataGridView1.Columns["SoTien"].DefaultCellStyle.Format = "#,##0 'VNĐ'";
+
 
         }
 

@@ -85,7 +85,7 @@ namespace QuanLyQuanKaraoke.Forms
 
                 lbl.Text =
                     p.TenPhong + "\n" +
-                    p.Gia.ToString("N0") + "đ\n" +
+                    p.Gia.ToString("N0") + "VNĐ\n" +
                     (dangHat ? "Đang hát" : "Trống");
 
                 // Màu
